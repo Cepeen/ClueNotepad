@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
 
 
-
-
 class Notepad extends StatefulWidget {
-  Notepad(this.title);
+  Notepad(this.title, this.numberOfPlayers);
   final String title;
-
-
-  
+  final int numberOfPlayers;
 
   @override
   _NotepadState createState() => _NotepadState();
 }
 
-
 class _NotepadState extends State<Notepad> {
   var ktoArray = ['Green', 'Mustard', 'Orchid', 'Peacock', 'Plum', 'Scarlett'];
   var czymArray = ['Świecznik', 'Sztylet', 'Metalowa Rura', 'Rewolwer', 'Lina', 'Klucz francuski'];
   var gdzieArray = ['Salon', 'Sala bilardowa', 'Ogród zimowy', 'Jadalnia', 'Hol', 'Kuchnia', 'Biblioteka', 'Weranda', 'Gabinet'];
-  
-  @override
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +29,7 @@ class _NotepadState extends State<Notepad> {
           TableRow(
             decoration: const BoxDecoration(color: Colors.white,),
             children: <Widget>[
+              
               Container(
           alignment: Alignment.center,
           padding: EdgeInsets.all(2.0),
@@ -49,54 +42,70 @@ class _NotepadState extends State<Notepad> {
           child: Text('Ty',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
           height: 32, ),
+
+
+          for(int i = 0; i <= widget.numberOfPlayers -2; i++)
               Container(alignment: Alignment.center,
-          padding: EdgeInsets.all(2.0),
-          child: Text('Przeciwnik',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+        padding: EdgeInsets.all(2.0),
+        child: TextField(
+        textAlign: TextAlign.center,
+        decoration: InputDecoration( 
+        border: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        errorBorder: InputBorder.none,
+        disabledBorder: InputBorder.none,
+        contentPadding:
+        EdgeInsets.only(left: 3, bottom: 10, top: 0, right: 3),
+        hintText: "Gracz")),
           height: 32, ),
+
               Container(height: 32, color: Colors.white,),
             ],
           ),
 
-          createSectionTableRow('Kto'),
+          createSectionTableRow('Kto', widget.numberOfPlayers),
           for(var text in ktoArray)
-          createClickableTableRow(text),
+          createClickableTableRow(text, widget.numberOfPlayers),
          
-         createSectionTableRow('Czym'),
+          createSectionTableRow('Czym', widget.numberOfPlayers),
           for(var text in czymArray)
-          createClickableTableRow(text),
+          createClickableTableRow(text, widget.numberOfPlayers),
           
-          createSectionTableRow('Gdzie'),
+          createSectionTableRow('Gdzie', widget.numberOfPlayers),
           for(var text in gdzieArray)
-          createClickableTableRow(text),
+          createClickableTableRow(text, widget.numberOfPlayers),
+
         ]
       ),
     );
   }
 }
 
-TableRow createClickableTableRow(String text) {
+TableRow createClickableTableRow(String text, int playersAmount) {
   return TableRow(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-            ),
-            children: <Widget>[
-              Container(alignment: Alignment.center,
+    
+          decoration: const BoxDecoration(
+          color: Colors.white,
+          ),
+          children: <Widget>[
+              GestureDetector(onDoubleTap: (){},
+                              child: Container(alignment: Alignment.center,
           padding: EdgeInsets.all(2.0),
           child: Text(text,
           style: TextStyle(fontWeight: FontWeight.bold)),
           height: 32, color: Colors.white,),
-          for(int i = 0; i <= 2; i++)
+              ),
+          for(int i = 0; i <= playersAmount; i++)
               ClickableTableCell(),
-              
             ],
           );
 }
 
-TableRow createSectionTableRow(String text) {
+TableRow createSectionTableRow(String text, int playersAmount) {
   return TableRow(
-            decoration: const BoxDecoration(color: Colors.white,),
-            children: <Widget>[
+          decoration: const BoxDecoration(color: Colors.white,),
+          children: <Widget>[
               Container(
           alignment: Alignment.center,
           padding: EdgeInsets.all(2.0),
@@ -104,49 +113,61 @@ TableRow createSectionTableRow(String text) {
           style: TextStyle(fontWeight: FontWeight.bold)),
           height: 32, color: Colors.lightBlue,),
 
-              Container(height: 32, color: Colors.blue,),
-              Container(height: 32, color: Colors.blue,),
+for(int i = 0; i <= playersAmount; i++)
               Container(height: 32, color: Colors.blue,),
 
+          
        ],
-          );
+     );
 }
+
+
 
 class ClickableTableCell extends StatefulWidget {
 
-
+ClickableTableCell();
+  final key = GlobalKey();
   @override
-  _ClickableTableCellState createState() => _ClickableTableCellState(0);
+  _ClickableTableCellState createState() => _ClickableTableCellState();
 }
 
 class _ClickableTableCellState extends State<ClickableTableCell> {
-  
 
-int index = 0;
-_ClickableTableCellState(this.index);
+int index = 0
+;
 
-
-  @override
-  Widget build(BuildContext context) {
+Widget build(BuildContext context) {
     return TableRowInkWell(
-      onDoubleTap: () {
-        setState(() {
-          if(index < 2) {
-            ++index;
-          } else {
-            index = 0;
-          }
-        }
-        );
-      },
-
       
-          child: Container(
+      onTap: () {
+         showDialog(
+    context: context,
+    builder: (BuildContext context,) {
+      
+      return   AlertDialog( 
+      actions: <Widget>[
+      IconButton (icon: Icon(Icons.check), onPressed: () => Navigator.of(context).pop(setState(() {index = 1;}))),
+      IconButton(icon: Icon(Icons.close), onPressed: () => Navigator.of(context).pop(setState(() {index = 2;}))),
+      IconButton(icon: Icon(Icons.help), onPressed: () => Navigator.of(context).pop(setState(() {index = 3;}))),
+      TextButton(child: Text('clear'), onPressed: () => Navigator.of(context).pop(setState(() {index = 0;})))
+      
+      ]);
+    }
+    );
+    },      child: Container(
             height: 32,
             child: Center(
-        child: index == 0 ? Container() : index == 1 ? Icon(Icons.close) : Icon(Icons.check),
+        child: 
+        
+        index == 0 ? Container():
+        index == 1 ? Icon(Icons.check) : 
+        index == 2 ? Icon(Icons.close) : 
+        index == 3 ? Icon(Icons.help) : Container() 
+       ),
       ),
-          ),
     );
   }
 }
+
+
+ 
