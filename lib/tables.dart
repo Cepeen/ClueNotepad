@@ -60,7 +60,14 @@ class _NotepadState extends State<Notepad> {
         hintText: "Gracz")),
           height: 32, ),
 
-              Container(height: 32, color: Colors.white,),
+              Container(     alignment: Alignment.center,
+          padding: EdgeInsets.all(2.0),
+          child: FittedBox(
+            child: Text('Notes',
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+          ),
+          height: 32, color: Colors. blue),
+
             ],
           ),
 
@@ -141,16 +148,21 @@ Widget build(BuildContext context) {
       
       onTap: () {
          showDialog(
+           
     context: context,
     builder: (BuildContext context,) {
       
       return   AlertDialog( 
+      backgroundColor: Colors.blue[50],
       actions: <Widget>[
+      Row( mainAxisAlignment: MainAxisAlignment.center,
+        children: [
       IconButton (icon: Icon(Icons.check), onPressed: () => Navigator.of(context).pop(setState(() {index = 1;}))),
       IconButton(icon: Icon(Icons.close), onPressed: () => Navigator.of(context).pop(setState(() {index = 2;}))),
       IconButton(icon: Icon(Icons.help), onPressed: () => Navigator.of(context).pop(setState(() {index = 3;}))),
       TextButton(child: Text('clear'), onPressed: () => Navigator.of(context).pop(setState(() {index = 0;})))
-      
+        ],
+      ),
       ]);
     }
     );
