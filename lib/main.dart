@@ -45,8 +45,15 @@ Future<void> onSelected(BuildContext context, int item) async {
 
     showDialog(context: context, builder: (context) => AlertDialog (
        actions: <Widget>[
-       TextButton(child: Text('clear'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = playersInitial
-       ;}))),
+       Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+         children: [
+
+           TextButton(child: Text('clear'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = playersInitial
+           ;}))),
+         ],
+       ),
          ]
        )
        ); 
@@ -54,22 +61,49 @@ Future<void> onSelected(BuildContext context, int item) async {
        break;
       case 1: {
       
-    SystemNavigator.pop();
+           showDialog(context: context, builder: (context) => AlertDialog (
+             backgroundColor: Colors.blue[50],
+             title: FittedBox(child: Text("How many friends will play?")),
+             content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            
+      children: <Widget>[
+    Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: SizedBox(width: 40.0,height: 40.0,
+      child: ElevatedButton(child: Text('2'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 2;})))),
+    ),
+     Padding(
+       padding: const EdgeInsets.all(4.0),
+       child: SizedBox(width: 40.0,height: 40.0,
+    child: ElevatedButton(child: Text('3'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 3;})))),
+     ),
+     Padding(
+       padding: const EdgeInsets.all(4.0),
+       child: SizedBox(width: 40.0,height: 40.0,
+        child: ElevatedButton(child: Text('4'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 4;})))),
+     ),
+     Padding(
+       padding: const EdgeInsets.all(4.0),
+       child: SizedBox(width: 40.0,height: 40.0,
+       child: ElevatedButton(child: Text('5'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 5;})))),
+     ),
+     Padding(
+       padding: const EdgeInsets.all(4.0),
+       child: SizedBox(width: 40.0,height: 40.0,
+    child: ElevatedButton(child: Text('6'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 6;})))),
+     ),
+
+    
+      ]
+      ))
+      );
       
       }
        break;
     case 2: {
-
-           showDialog(context: context, builder: (context) => AlertDialog (
-      actions: <Widget>[
-      TextButton(child: Text('2'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 2;}))),
-      TextButton(child: Text('3'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 3;}))),
-      TextButton(child: Text('4'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 4;}))),
-      TextButton(child: Text('5'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 5;}))),
-      TextButton(child: Text('6'), onPressed: () => Navigator.of(context).pop(setState(() {playersInitial = 6;}))),
-      ]
-      )
-      );
+    SystemNavigator.pop();
       }
        break;
      default:
@@ -88,11 +122,11 @@ Future<void> onSelected(BuildContext context, int item) async {
           ),
           PopupMenuItem(
             value: 1,
-            child: Text('close app')
+            child: Text('set players')
           ),
           PopupMenuItem(
             value: 2,
-            child:Text('set players')
+            child:Text('close app')
           ),
         
           ],
