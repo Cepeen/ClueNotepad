@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'about.dart';
 
 import 'tables.dart';
 
@@ -145,16 +146,10 @@ class _AppContentState extends State<AppContent> {
         break;
       case 2:
         {
-          SystemNavigator.pop();
-        }
-        break;
-      case 3:
-        {
           showDialog(
               context: context,
               builder: (BuildContext context) {
                 return SimpleDialog(
-                  
                   backgroundColor: Colors.blue[50],
                   title: Text(AppLocalizations.of(context).choseedition),
                   children: <Widget>[
@@ -201,9 +196,19 @@ class _AppContentState extends State<AppContent> {
                   ],
                 );
               });
-
-          break;
         }
+        break;
+      case 3:
+        {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => About()));
+        }
+        break;
+      case 4:
+        {
+          SystemNavigator.pop();
+        }
+        break;
       default:
     }
   }
@@ -224,10 +229,12 @@ class _AppContentState extends State<AppContent> {
                   value: 1,
                   child: Text(AppLocalizations.of(context).setPlayers)),
               PopupMenuItem(
-                  value: 2, child: Text(AppLocalizations.of(context).closeapp)),
-              PopupMenuItem(
-                  value: 3,
+                  value: 2,
                   child: Text(AppLocalizations.of(context).choseedition)),
+              PopupMenuItem(
+                  value: 3, child: Text(AppLocalizations.of(context).about)),
+              PopupMenuItem(
+                  value: 4, child: Text(AppLocalizations.of(context).closeapp)),
             ],
           )
         ],

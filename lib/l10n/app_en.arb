@@ -45,6 +45,8 @@
     "mansion": "Mansion",
     "ballroom": "Ballroom",
     "cellar": "Cellar",
+    "about": "About",
+    "goback": "return",
     "setnumberofplayers": "set number of players",
     "@helloWorld": {
         "description": "The conventional newborn programmer greeting"
