@@ -29,6 +29,31 @@ class _AboutState extends State<About> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final TextStyle textStyle = theme.textTheme.bodyMedium;
+    final List<Widget> aboutBoxChildren = <Widget>[
+      const SizedBox(height: 24),
+      RichText(
+        text: TextSpan(
+          children: <TextSpan>[
+            TextSpan(
+                style: textStyle,
+                text: "Flutter is Google's UI toolkit for building beautiful, "
+                    '\nnatively compiled applications for mobile, web, and desktop '
+                    '\nfrom a single codebase. Learn more about Flutter at '),
+            TextSpan(
+              text: '\nhttps://flutter.dev',
+              style: TextStyle(color: Colors.blue),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  _launchURL2();
+                },
+            ),
+            TextSpan(style: textStyle, text: '.'),
+          ],
+        ),
+      ),
+    ];
     return Scaffold(
         appBar: AppBar(title: Text((AppLocalizations.of(context).about))),
         body: SafeArea(
@@ -53,14 +78,32 @@ class _AboutState extends State<About> {
                                       ),
                                       children: <TextSpan>[
                                         TextSpan(
+                                            text: '\nCluedo Notepad is free aplication created in'),
+                                        TextSpan(
+                                          text: ' flutter',
+                                          style: TextStyle(color: Colors.blue),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () {
+                                              showAboutDialog(
+                                                context: context,
+                                                applicationIcon: const FlutterLogo(),
+                                                applicationName: 'Flutter',
+                                                applicationVersion: 'August 2019',
+                                                applicationLegalese:
+                                                    '\u{a9} 2014 The Flutter Authors',
+                                                children: aboutBoxChildren,
+                                              );
+                                            },
+                                        ),
+                                        TextSpan(
                                             text:
-                                                '\nCluedo Notepad is free aplication created in flutter.\n App is totally free and do not contain any advertisements.\n Application do not collectany data.\n As an user of Clue Notepad you agree with our'),
+                                                ".\n App is totally free and do not contain any advertisements.\n Application do not collectany data.\n As an user of Clue Notepad you agree with our"),
                                         TextSpan(
                                           text: '\nprivacy policy',
                                           style: TextStyle(color: Colors.blue),
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () {
-                                             _launchURL();
+                                              _launchURL();
                                             },
                                         )
                                       ])),
@@ -77,5 +120,15 @@ class _AboutState extends State<About> {
     } else {
       throw 'Could not launch $url';
     }
+  }
+}
+
+_launchURL2() async {
+  const url = 'https://flutter.dev'; //add privacy policy url
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch $url';
   }
 }
