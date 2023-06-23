@@ -77,8 +77,7 @@ class _AboutState extends State<About> {
                                         fontWeight: FontWeight.normal,
                                       ),
                                       children: <TextSpan>[
-                                        TextSpan(
-                                            text: '\nCluedo Notepad is free aplication created in'),
+                                        TextSpan(text: '\nCluedo Notepad is aplication created in'),
                                         TextSpan(
                                           text: ' flutter',
                                           style: TextStyle(color: Colors.blue),
@@ -97,7 +96,7 @@ class _AboutState extends State<About> {
                                         ),
                                         TextSpan(
                                             text:
-                                                ".\n App is totally free and do not contain any advertisements.\n Application do not collectany data.\n As an user of Clue Notepad you agree with our"),
+                                                ".\n App is totally free and do not contain any advertisements.\n Application do not collect any data.\n As an user of Clue Notepad you agree with our"),
                                         TextSpan(
                                           text: '\nprivacy policy',
                                           style: TextStyle(color: Colors.blue),
