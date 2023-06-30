@@ -15,14 +15,7 @@ class Notepad extends StatefulWidget {
 class _NotepadState extends State<Notepad> {
   @override
   Widget build(BuildContext context) {
-    var ktoArray = [
-      'Green',
-      'Mustard',
-      'Orchid',
-      'Peacock',
-      'Plum',
-      'Scarlett'
-    ];
+    var ktoArray = ['Green', 'Mustard', 'Orchid', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray = [
       AppLocalizations.of(context).candlestick,
       AppLocalizations.of(context).dagger,
@@ -43,14 +36,7 @@ class _NotepadState extends State<Notepad> {
       AppLocalizations.of(context).study
     ];
 
-    var ktoArray2 = [
-      'Green',
-      'Mustard',
-      'White',
-      'Peacock',
-      'Plum',
-      'Scarlett'
-    ];
+    var ktoArray2 = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray2 = [
       AppLocalizations.of(context).candlestick,
       AppLocalizations.of(context).axe,
@@ -74,14 +60,7 @@ class _NotepadState extends State<Notepad> {
       AppLocalizations.of(context).observatory
     ];
 
-    var ktoArray3 = [
-      'Green',
-      'Mustard',
-      'White',
-      'Peacock',
-      'Plum',
-      'Scarlett'
-    ];
+    var ktoArray3 = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray3 = [
       AppLocalizations.of(context).candlestick,
       AppLocalizations.of(context).dagger,
@@ -105,31 +84,27 @@ class _NotepadState extends State<Notepad> {
 
     return SingleChildScrollView(
       child: Table(
-          border: TableBorder.all(width: 2, color: Colors.blue),
+          border: TableBorder.all(width: 2, color: Colors.pink),
           columnWidths: {
             0: FixedColumnWidth(120),
           },
           defaultVerticalAlignment: TableCellVerticalAlignment.middle,
           children: <TableRow>[
             TableRow(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
+              decoration: const BoxDecoration(),
               children: <Widget>[
                 Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(2.0),
                     child: Text(AppLocalizations.of(context).mansion,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white)),
+                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
                     height: 32,
-                    color: Colors.blue),
+                    color: Colors.green),
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(2.0),
                   child: Text(AppLocalizations.of(context).you,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black)),
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                   height: 32,
                 ),
                 for (int i = 0; i <= widget.numberOfPlayers - 2; i++)
@@ -144,8 +119,7 @@ class _NotepadState extends State<Notepad> {
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
                             disabledBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: 3, bottom: 10, top: 0, right: 3),
+                            contentPadding: EdgeInsets.only(left: 3, bottom: 10, top: 0, right: 3),
                             hintText: AppLocalizations.of(context).player)),
                     height: 32,
                   ),
@@ -154,53 +128,33 @@ class _NotepadState extends State<Notepad> {
                     padding: EdgeInsets.all(2.0),
                     child: FittedBox(
                       child: Text('Notes',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
                     ),
                     height: 32,
-                    color: Colors.blue),
+                    color: Colors.purple),
               ],
             ),
             if (selectedVersion == 1) ...[
-              createSectionTableRow(
-                  AppLocalizations.of(context).who, widget.numberOfPlayers),
-              for (var text in ktoArray)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(
-                  AppLocalizations.of(context).how, widget.numberOfPlayers),
-              for (var text in czymArray)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(
-                  AppLocalizations.of(context).where, widget.numberOfPlayers),
-              for (var text in gdzieArray)
-                createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).who, widget.numberOfPlayers),
+              for (var text in ktoArray) createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).how, widget.numberOfPlayers),
+              for (var text in czymArray) createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).where, widget.numberOfPlayers),
+              for (var text in gdzieArray) createClickableTableRow(text, widget.numberOfPlayers),
             ] else if (selectedVersion == 2) ...[
-              createSectionTableRow(
-                  AppLocalizations.of(context).who, widget.numberOfPlayers),
-              for (var text in ktoArray2)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(
-                  AppLocalizations.of(context).how, widget.numberOfPlayers),
-              for (var text in czymArray2)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(
-                  AppLocalizations.of(context).where, widget.numberOfPlayers),
-              for (var text in gdzieArray2)
-                createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).who, widget.numberOfPlayers),
+              for (var text in ktoArray2) createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).how, widget.numberOfPlayers),
+              for (var text in czymArray2) createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).where, widget.numberOfPlayers),
+              for (var text in gdzieArray2) createClickableTableRow(text, widget.numberOfPlayers),
             ] else ...[
-              createSectionTableRow(
-                  AppLocalizations.of(context).who, widget.numberOfPlayers),
-              for (var text in ktoArray3)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(
-                  AppLocalizations.of(context).how, widget.numberOfPlayers),
-              for (var text in czymArray3)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(
-                  AppLocalizations.of(context).where, widget.numberOfPlayers),
-              for (var text in gdzieArray3)
-                createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).who, widget.numberOfPlayers),
+              for (var text in ktoArray3) createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).how, widget.numberOfPlayers),
+              for (var text in czymArray3) createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).where, widget.numberOfPlayers),
+              for (var text in gdzieArray3) createClickableTableRow(text, widget.numberOfPlayers),
             ]
           ]),
     );
@@ -244,7 +198,7 @@ TableRow createSectionTableRow(String text, int playersAmount) {
       for (int i = 0; i <= playersAmount; i++)
         Container(
           height: 32,
-          color: Colors.blue,
+          color: Colors.yellow,
         ),
     ],
   );
@@ -268,8 +222,7 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
             builder: (
               BuildContext context,
             ) {
-              return AlertDialog(backgroundColor: Colors.blue[50], actions: <
-                  Widget>[
+              return AlertDialog(backgroundColor: Colors.blue[50], actions: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
