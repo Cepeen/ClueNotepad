@@ -44,8 +44,15 @@
     "study": "Gabinet",
     "mansion": "Posiadłość",
     "ballroom": "Sala Balowa",
+    "setcolor": "Wybierz kolor",
     "cellar": "Piwnica",
     "about": "O aplikacji",
     "goback": "Wróc",
+    "blue": "Niebieski",
+    "red": "Czerwony",
+    "green": "Zielony",
+    "purple": "Fioletowy",
+    "yellow": "Żółty",
+    "white": "Biały",
     "setnumberofplayers": "Ustaw liczbę graczy"
 }

@@ -44,11 +44,15 @@
     "study": "Study",
     "mansion": "Mansion",
     "ballroom": "Ballroom",
+    "setcolor": "Set color",
     "cellar": "Cellar",
     "about": "About",
     "goback": "return",
-    "setnumberofplayers": "set number of players",
-    "@helloWorld": {
-        "description": "The conventional newborn programmer greeting"
-    }
+    "blue": "Blue",
+    "red": "Red",
+    "green": "Green",
+    "purple": "Purple",
+    "yellow": "Yellow",
+    "white": "White",
+    "setnumberofplayers": "set number of players"
 }

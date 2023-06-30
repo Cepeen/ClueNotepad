@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'about.dart';
-
+import 'package:notepad/ui/global/theme/app_theme.dart';
 import 'tables.dart';
 
 void main() => runApp(const ClueNotepad());
 
 var selectedVersion;
+var selectedTheme = greenTheme;
 
 class ClueNotepad extends StatefulWidget {
   const ClueNotepad({Key key}) : super(key: key);
@@ -35,6 +35,7 @@ class _ClueNotepadState extends State<ClueNotepad> {
       ],
       title: ClueNotepad._title,
       home: AppContent(),
+      theme: selectedTheme,
     );
   }
 }
@@ -60,8 +61,7 @@ class _AppContentState extends State<AppContent> {
                       children: [
                         TextButton(
                             child: Text(AppLocalizations.of(context).clear),
-                            onPressed: () =>
-                                Navigator.of(context).pop(setState(() {
+                            onPressed: () => Navigator.of(context).pop(setState(() {
                                   playersInitial = playersInitial;
                                 }))),
                       ],
@@ -75,8 +75,7 @@ class _AppContentState extends State<AppContent> {
               context: context,
               builder: (context) => AlertDialog(
                   backgroundColor: Colors.blue[50],
-                  title: FittedBox(
-                      child: Text((AppLocalizations.of(context).howmany))),
+                  title: FittedBox(child: Text((AppLocalizations.of(context).howmany))),
                   content: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,8 +87,7 @@ class _AppContentState extends State<AppContent> {
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('2'),
-                                  onPressed: () =>
-                                      Navigator.of(context).pop(setState(() {
+                                  onPressed: () => Navigator.of(context).pop(setState(() {
                                         playersInitial = 2;
                                       })))),
                         ),
@@ -100,8 +98,7 @@ class _AppContentState extends State<AppContent> {
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('3'),
-                                  onPressed: () =>
-                                      Navigator.of(context).pop(setState(() {
+                                  onPressed: () => Navigator.of(context).pop(setState(() {
                                         playersInitial = 3;
                                       })))),
                         ),
@@ -112,8 +109,7 @@ class _AppContentState extends State<AppContent> {
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('4'),
-                                  onPressed: () =>
-                                      Navigator.of(context).pop(setState(() {
+                                  onPressed: () => Navigator.of(context).pop(setState(() {
                                         playersInitial = 4;
                                       })))),
                         ),
@@ -124,8 +120,7 @@ class _AppContentState extends State<AppContent> {
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('5'),
-                                  onPressed: () =>
-                                      Navigator.of(context).pop(setState(() {
+                                  onPressed: () => Navigator.of(context).pop(setState(() {
                                         playersInitial = 5;
                                       })))),
                         ),
@@ -136,8 +131,7 @@ class _AppContentState extends State<AppContent> {
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('6'),
-                                  onPressed: () =>
-                                      Navigator.of(context).pop(setState(() {
+                                  onPressed: () => Navigator.of(context).pop(setState(() {
                                         playersInitial = 6;
                                       })))),
                         ),
@@ -177,8 +171,7 @@ class _AppContentState extends State<AppContent> {
                                   selectedVersion = 2;
                                 }));
                               },
-                              child:
-                                  Text(AppLocalizations.of(context).discover),
+                              child: Text(AppLocalizations.of(context).discover),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -200,13 +193,66 @@ class _AppContentState extends State<AppContent> {
         break;
       case 3:
         {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => About()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
         }
         break;
       case 4:
         {
-          SystemNavigator.pop();
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return SimpleDialog(
+                  backgroundColor: Colors.blue[50],
+                  children: <Widget>[
+                    SimpleDialogOption(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                            width: 20.0,
+                            height: 40.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue, //background color of button
+                                  elevation: 3, //elevation of button
+                                  shape: RoundedRectangleBorder(//to set border radius to button
+                                      )),
+                              onPressed: () {},
+                              child: Text(AppLocalizations.of(context).blue),
+                            ))),
+                    SimpleDialogOption(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                            width: 40.0,
+                            height: 40.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red, //background color of button
+                                  elevation: 3, //elevation of button
+                                  shape: RoundedRectangleBorder(//to set border radius to button
+                                      )),
+                              onPressed: () {},
+                              child: Text(AppLocalizations.of(context).red),
+                            ))),
+                    SimpleDialogOption(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                            width: 40.0,
+                            height: 40.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green, //background color of button
+                                  elevation: 3, //elevation of button
+                                  shape: RoundedRectangleBorder(//to set border radius to button
+                                      )),
+                              onPressed: () {
+                                Navigator.of(context).pop(setState(() {
+                                  selectedTheme = greenTheme;
+                                }));
+                              },
+                              child: Text(AppLocalizations.of(context).green),
+                            ))),
+                  ],
+                );
+              });
         }
         break;
       default:
@@ -222,19 +268,12 @@ class _AppContentState extends State<AppContent> {
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem(
-                  value: 0,
-                  child: Text(AppLocalizations.of(context).cleartabbles)),
-              PopupMenuItem(
-                  value: 1,
-                  child: Text(AppLocalizations.of(context).setPlayers)),
-              PopupMenuItem(
-                  value: 2,
-                  child: Text(AppLocalizations.of(context).choseedition)),
-              PopupMenuItem(
-                  value: 3, child: Text(AppLocalizations.of(context).about)),
-              PopupMenuItem(
-                  value: 4, child: Text(AppLocalizations.of(context).closeapp)),
+              PopupMenuItem(value: 0, child: Text(AppLocalizations.of(context).cleartabbles)),
+              PopupMenuItem(value: 1, child: Text(AppLocalizations.of(context).setPlayers)),
+              PopupMenuItem(value: 2, child: Text(AppLocalizations.of(context).choseedition)),
+              PopupMenuItem(value: 3, child: Text(AppLocalizations.of(context).about)),
+              PopupMenuItem(value: 4, child: Text(AppLocalizations.of(context).setcolor)),
+              PopupMenuItem(value: 5, child: Text(AppLocalizations.of(context).closeapp)),
             ],
           )
         ],
