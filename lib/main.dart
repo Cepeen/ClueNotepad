@@ -25,33 +25,6 @@ class _ClueNotepadState extends State<ClueNotepad> {
   var selectedTheme;
   var playersInitial = 2; //Default amount of players - creates 3 columns
 
-  final blueTheme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
-    scaffoldBackgroundColor: Colors.white,
-    dividerColor: Colors.blue,
-    inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.red)),
-    ),
-  );
-
-  final redTheme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
-    scaffoldBackgroundColor: Colors.white,
-    dividerColor: Colors.red,
-    inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.red)),
-    ),
-  );
-
-  final greenTheme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green),
-    scaffoldBackgroundColor: Colors.white,
-    dividerColor: Colors.green,
-    inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.green)),
-    ),
-  );
-
   void changeTheme(ThemeData theme) {
     setState(() {
       selectedTheme = theme;
