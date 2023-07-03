@@ -84,7 +84,7 @@ class _NotepadState extends State<Notepad> {
 
     return SingleChildScrollView(
       child: Table(
-          border: TableBorder.all(width: 2, color: Colors.pink),
+          border: TableBorder.all(width: 2, color: Color.fromARGB(255, 34, 34, 34)),
           columnWidths: {
             0: FixedColumnWidth(120),
           },
@@ -94,12 +94,12 @@ class _NotepadState extends State<Notepad> {
               decoration: const BoxDecoration(),
               children: <Widget>[
                 Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(2.0),
-                    child: Text(AppLocalizations.of(context).mansion,
-                        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-                    height: 32,
-                    color: Color.fromARGB(255, 175, 76, 153)),
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(2.0),
+                  child: Text(AppLocalizations.of(context).mansion,
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                  height: 32,
+                ),
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(2.0),

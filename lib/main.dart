@@ -8,8 +8,6 @@ import 'tables.dart';
 void main() => runApp(const ClueNotepad());
 
 var selectedVersion;
-var selectedTheme;
-var playersInitial = 2; //Default amount of players - creates 3 columns
 
 class ClueNotepad extends StatefulWidget {
   const ClueNotepad({Key key}) : super(key: key);
