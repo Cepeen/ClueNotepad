@@ -8,7 +8,8 @@ import 'tables.dart';
 void main() => runApp(const ClueNotepad());
 
 var selectedVersion;
-var selectedTheme = greenTheme;
+var selectedTheme;
+var playersInitial = 2; //Default amount of players - creates 3 columns
 
 class ClueNotepad extends StatefulWidget {
   const ClueNotepad({Key key}) : super(key: key);
@@ -20,34 +21,84 @@ class ClueNotepad extends StatefulWidget {
 }
 
 class _ClueNotepadState extends State<ClueNotepad> {
+  var selectedVersion;
+  var selectedTheme;
+  var playersInitial = 2; //Default amount of players - creates 3 columns
+
+  final blueTheme = ThemeData(
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
+    scaffoldBackgroundColor: Colors.white,
+    dividerColor: Colors.blue,
+    inputDecorationTheme: const InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.red)),
+    ),
+  );
+
+  final redTheme = ThemeData(
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
+    scaffoldBackgroundColor: Colors.white,
+    dividerColor: Colors.red,
+    inputDecorationTheme: const InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.red)),
+    ),
+  );
+
+  final greenTheme = ThemeData(
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green),
+    scaffoldBackgroundColor: Colors.white,
+    dividerColor: Colors.green,
+    inputDecorationTheme: const InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.green)),
+    ),
+  );
+
+  void changeTheme(ThemeData theme) {
+    setState(() {
+      selectedTheme = theme;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       localizationsDelegates: [
-        AppLocalizations.delegate, // Add this line
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        Locale('en', ''), // English,
-        Locale('pl', ''), // Polish,
+        Locale('en', ''),
+        Locale('pl', ''),
       ],
       title: ClueNotepad._title,
-      home: AppContent(),
+      home: AppContent(
+        selectedTheme: selectedTheme,
+        changeTheme: changeTheme,
+        playersInitial: playersInitial,
+      ),
       theme: selectedTheme,
     );
   }
 }
 
 class AppContent extends StatefulWidget {
+  final ThemeData selectedTheme;
+  final void Function(ThemeData) changeTheme;
+  final int playersInitial;
+
+  const AppContent({
+    Key key,
+    @required this.selectedTheme,
+    @required this.changeTheme,
+    @required this.playersInitial,
+  }) : super(key: key);
+
   @override
   _AppContentState createState() => _AppContentState();
 }
 
 class _AppContentState extends State<AppContent> {
-  var playersInitial = 2;
-
   Future<void> onSelected(BuildContext context, int item) async {
     switch (item) {
       case 0:
@@ -215,7 +266,10 @@ class _AppContentState extends State<AppContent> {
                                   elevation: 3, //elevation of button
                                   shape: RoundedRectangleBorder(//to set border radius to button
                                       )),
-                              onPressed: () {},
+                              onPressed: () {
+                                widget.changeTheme(blueTheme);
+                                Navigator.of(context).pop();
+                              },
                               child: Text(AppLocalizations.of(context).blue),
                             ))),
                     SimpleDialogOption(
@@ -229,7 +283,10 @@ class _AppContentState extends State<AppContent> {
                                   elevation: 3, //elevation of button
                                   shape: RoundedRectangleBorder(//to set border radius to button
                                       )),
-                              onPressed: () {},
+                              onPressed: () {
+                                widget.changeTheme(redTheme);
+                                Navigator.of(context).pop();
+                              },
                               child: Text(AppLocalizations.of(context).red),
                             ))),
                     SimpleDialogOption(
@@ -244,9 +301,8 @@ class _AppContentState extends State<AppContent> {
                                   shape: RoundedRectangleBorder(//to set border radius to button
                                       )),
                               onPressed: () {
-                                Navigator.of(context).pop(setState(() {
-                                  selectedTheme = greenTheme;
-                                }));
+                                widget.changeTheme(greenTheme);
+                                Navigator.of(context).pop();
                               },
                               child: Text(AppLocalizations.of(context).green),
                             ))),

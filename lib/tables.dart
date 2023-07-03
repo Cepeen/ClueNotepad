@@ -99,7 +99,7 @@ class _NotepadState extends State<Notepad> {
                     child: Text(AppLocalizations.of(context).mansion,
                         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
                     height: 32,
-                    color: Colors.green),
+                    color: Color.fromARGB(255, 175, 76, 153)),
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(2.0),
