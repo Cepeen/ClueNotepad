@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:notepad/ui/global/theme/app_theme.dart';
 
 import 'main.dart';
 
@@ -84,7 +85,7 @@ class _NotepadState extends State<Notepad> {
 
     return SingleChildScrollView(
       child: Table(
-          border: TableBorder.all(width: 2, color: Color.fromARGB(255, 34, 34, 34)),
+          border: TableBorder.all(width: 2, color: Color.fromARGB(255, 131, 131, 131)),
           columnWidths: {
             0: FixedColumnWidth(120),
           },
@@ -128,10 +129,10 @@ class _NotepadState extends State<Notepad> {
                     padding: EdgeInsets.all(2.0),
                     child: FittedBox(
                       child: Text('Notes',
-                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                     ),
                     height: 32,
-                    color: Colors.purple),
+                    color: Colors.white),
               ],
             ),
             if (selectedVersion == 1) ...[
@@ -182,6 +183,42 @@ TableRow createClickableTableRow(String text, int playersAmount) {
   );
 }
 
+Color getColorPrimary() {
+  if (selectedTheme == blueTheme) {
+    return Colors.blue;
+  } else if (selectedTheme == redTheme) {
+    return Colors.red;
+  } else if (selectedTheme == greenTheme) {
+    return Colors.green;
+  } else if (selectedTheme == yellowTheme) {
+    return Colors.yellow;
+  } else if (selectedTheme == purpleTheme) {
+    return Colors.purple;
+  } else if (selectedTheme == whiteTheme) {
+    return Color.fromARGB(179, 182, 182, 182);
+  } else {
+    return Colors.blue;
+  }
+}
+
+Color getColorSecondary() {
+  if (selectedTheme == blueTheme) {
+    return Colors.blue[300];
+  } else if (selectedTheme == redTheme) {
+    return Colors.red[300];
+  } else if (selectedTheme == greenTheme) {
+    return Colors.green[300];
+  } else if (selectedTheme == yellowTheme) {
+    return Colors.yellow[300];
+  } else if (selectedTheme == purpleTheme) {
+    return Colors.purple[300];
+  } else if (selectedTheme == whiteTheme) {
+    return Color.fromARGB(179, 226, 226, 226);
+  } else {
+    return Colors.blue[300];
+  }
+}
+
 TableRow createSectionTableRow(String text, int playersAmount) {
   return TableRow(
     decoration: const BoxDecoration(
@@ -189,17 +226,12 @@ TableRow createSectionTableRow(String text, int playersAmount) {
     ),
     children: <Widget>[
       Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(2.0),
-        child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
-        height: 32,
-        color: Colors.lightBlue,
-      ),
-      for (int i = 0; i <= playersAmount; i++)
-        Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(2.0),
+          child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
           height: 32,
-          color: Colors.yellow,
-        ),
+          color: getColorPrimary()),
+      for (int i = 0; i <= playersAmount; i++) Container(height: 32, color: getColorSecondary()),
     ],
   );
 }

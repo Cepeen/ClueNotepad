@@ -65,19 +65,21 @@ class _AboutState extends State<About> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Card(
-                        color: Colors.blue[50],
+                        color: Colors.blue[200],
                         child: Padding(
-                            padding: EdgeInsets.all(70.0),
+                            padding: EdgeInsets.all(10.0),
                             child: Container(
                               child: new RichText(
                                   textAlign: TextAlign.center,
                                   text: new TextSpan(
                                       text: 'Clue Notepad version: $_version\n',
-                                      style: TextStyle(
+                                      style: TextStyle(color: Color.fromARGB(255, 0, 46, 83),
                                         fontWeight: FontWeight.normal,
                                       ),
                                       children: <TextSpan>[
-                                        TextSpan(text: '\nCluedo Notepad is aplication created in'),
+                                        TextSpan(
+                                          text: '\nCluedo Notepad is aplication created in',
+                                        ),
                                         TextSpan(
                                           text: ' flutter',
                                           style: TextStyle(color: Colors.blue),
@@ -131,5 +133,3 @@ _launchURL2() async {
     throw 'Could not launch $url';
   }
 }
-
-
