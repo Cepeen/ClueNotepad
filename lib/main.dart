@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'about.dart';
@@ -6,9 +7,8 @@ import 'package:notepad/ui/global/theme/app_theme.dart';
 import 'tables.dart';
 
 void main() => runApp(const ClueNotepad());
-
+var selectedTheme = blueTheme;
 var selectedVersion;
-var selectedTheme;
 var playersInitial = 2; //Default amount of players - creates 3 columns
 
 class ClueNotepad extends StatefulWidget {
@@ -21,37 +21,6 @@ class ClueNotepad extends StatefulWidget {
 }
 
 class _ClueNotepadState extends State<ClueNotepad> {
-  var selectedVersion;
-  var selectedTheme;
-  var playersInitial = 2; //Default amount of players - creates 3 columns
-
-  final blueTheme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
-    scaffoldBackgroundColor: Colors.white,
-    dividerColor: Colors.blue,
-    inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.red)),
-    ),
-  );
-
-  final redTheme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
-    scaffoldBackgroundColor: Colors.white,
-    dividerColor: Colors.red,
-    inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.red)),
-    ),
-  );
-
-  final greenTheme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green),
-    scaffoldBackgroundColor: Colors.white,
-    dividerColor: Colors.green,
-    inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.green)),
-    ),
-  );
-
   void changeTheme(ThemeData theme) {
     setState(() {
       selectedTheme = theme;
@@ -244,11 +213,6 @@ class _AppContentState extends State<AppContent> {
         break;
       case 3:
         {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
-        }
-        break;
-      case 4:
-        {
           showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -306,9 +270,74 @@ class _AppContentState extends State<AppContent> {
                               },
                               child: Text(AppLocalizations.of(context).green),
                             ))),
+                    SimpleDialogOption(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                            width: 20.0,
+                            height: 40.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.yellow, //background color of button
+                                  elevation: 3, //elevation of button
+                                  shape: RoundedRectangleBorder(//to set border radius to button
+                                      )),
+                              onPressed: () {
+                                widget.changeTheme(yellowTheme);
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(AppLocalizations.of(context).yellow,
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                            ))),
+                    SimpleDialogOption(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                            width: 20.0,
+                            height: 40.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.purple, //background color of button
+                                  elevation: 3, //elevation of button
+                                  shape: RoundedRectangleBorder(//to set border radius to button
+                                      )),
+                              onPressed: () {
+                                widget.changeTheme(purpleTheme);
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(AppLocalizations.of(context).purple),
+                            ))),
+                    SimpleDialogOption(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                            width: 20.0,
+                            height: 40.0,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white, //background color of button
+                                  elevation: 3, //elevation of button
+                                  shape: RoundedRectangleBorder(//to set border radius to button
+                                      )),
+                              onPressed: () {
+                                widget.changeTheme(whiteTheme);
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(AppLocalizations.of(context).white,
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                            ))),
                   ],
                 );
               });
+        }
+        break;
+      case 4:
+        {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
+        }
+        break;
+      case 5:
+        {
+          SystemNavigator.pop();
         }
         break;
       default:
@@ -327,8 +356,8 @@ class _AppContentState extends State<AppContent> {
               PopupMenuItem(value: 0, child: Text(AppLocalizations.of(context).cleartabbles)),
               PopupMenuItem(value: 1, child: Text(AppLocalizations.of(context).setPlayers)),
               PopupMenuItem(value: 2, child: Text(AppLocalizations.of(context).choseedition)),
-              PopupMenuItem(value: 3, child: Text(AppLocalizations.of(context).about)),
-              PopupMenuItem(value: 4, child: Text(AppLocalizations.of(context).setcolor)),
+              PopupMenuItem(value: 3, child: Text(AppLocalizations.of(context).setcolor)),
+              PopupMenuItem(value: 4, child: Text(AppLocalizations.of(context).about)),
               PopupMenuItem(value: 5, child: Text(AppLocalizations.of(context).closeapp)),
             ],
           )
