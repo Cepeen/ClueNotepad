@@ -21,10 +21,8 @@ class _AboutState extends State<About> {
 
   void _load() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
     _version = packageInfo.version;
-
-    setState(() => {});
+    setState(() {});
   }
 
   @override
@@ -37,10 +35,11 @@ class _AboutState extends State<About> {
         text: TextSpan(
           children: <TextSpan>[
             TextSpan(
-                style: textStyle,
-                text: "Flutter is Google's UI toolkit for building beautiful, "
-                    '\nnatively compiled applications for mobile, web, and desktop '
-                    '\nfrom a single codebase. Learn more about Flutter at '),
+              style: textStyle,
+              text: "Flutter is Google's UI toolkit for building beautiful, "
+                  '\nnatively compiled applications for mobile, web, and desktop '
+                  '\nfrom a single codebase. Learn more about Flutter at ',
+            ),
             TextSpan(
               text: '\nhttps://flutter.dev',
               style: TextStyle(color: Colors.blue),
@@ -54,61 +53,77 @@ class _AboutState extends State<About> {
         ),
       ),
     ];
+
     return Scaffold(
-        appBar: AppBar(title: Text((AppLocalizations.of(context).about))),
-        body: SafeArea(
-            child: GestureDetector(
-                onTap: () => FocusScope.of(context).unfocus(),
-                child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Card(
-                        color: Colors.blue[50],
-                        child: Padding(
-                            padding: EdgeInsets.all(70.0),
-                            child: Container(
-                              child: new RichText(
-                                  textAlign: TextAlign.center,
-                                  text: new TextSpan(
-                                      text: 'Clue Notepad version: $_version\n',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                      children: <TextSpan>[
-                                        TextSpan(text: '\nCluedo Notepad is aplication created in'),
-                                        TextSpan(
-                                          text: ' flutter',
-                                          style: TextStyle(color: Colors.blue),
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () {
-                                              showAboutDialog(
-                                                context: context,
-                                                applicationIcon: const FlutterLogo(),
-                                                applicationName: 'Flutter',
-                                                applicationVersion: 'August 2019',
-                                                applicationLegalese:
-                                                    '\u{a9} 2014 The Flutter Authors',
-                                                children: aboutBoxChildren,
-                                              );
-                                            },
-                                        ),
-                                        TextSpan(
-                                            text:
-                                                ".\n App is totally free and do not contain any advertisements.\n Application do not collect any data.\n As an user of Clue Notepad you agree with our"),
-                                        TextSpan(
-                                          text: '\nprivacy policy',
-                                          style: TextStyle(color: Colors.blue),
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () {
-                                              _launchURL();
-                                            },
-                                        )
-                                      ])),
-                            )),
-                      )
-                    ]))));
+      appBar: AppBar(title: Text((AppLocalizations.of(context).about))),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                // Wrap Card with Expanded widget
+                child: Card(
+                  color: Colors.blue[50],
+                  child: Padding(
+                    padding: EdgeInsets.all(70.0),
+                    child: Container(
+                      child: new RichText(
+                        textAlign: TextAlign.center,
+                        text: new TextSpan(
+                          text: 'Clue Notepad version: $_version\n',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: '\nCluedo Notepad is aplication created in',
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            TextSpan(
+                              text: ' flutter',
+                              style: TextStyle(color: Colors.blue),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  showAboutDialog(
+                                    context: context,
+                                    applicationIcon: const FlutterLogo(),
+                                    applicationName: 'Flutter',
+                                    applicationVersion: 'August 2019',
+                                    applicationLegalese: '\u{a9} 2014 The Flutter Authors',
+                                    children: aboutBoxChildren,
+                                  );
+                                },
+                            ),
+                            TextSpan(
+                              text:
+                                  ".\n App is totally free and do not contain any advertisements.\n Application do not collect any data.\n As an user of Clue Notepad you agree with our",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            TextSpan(
+                              text: '\nprivacy policy',
+                              style: TextStyle(color: Colors.blue),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  _launchURL();
+                                },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   _launchURL() async {
@@ -131,5 +146,3 @@ _launchURL2() async {
     throw 'Could not launch $url';
   }
 }
-
-
