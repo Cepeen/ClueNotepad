@@ -54,5 +54,6 @@
     "purple": "Purple",
     "yellow": "Yellow",
     "white": "White",
-    "setnumberofplayers": "set number of players"
+    "setnumberofplayers": "set number of players",
+    "wipetable": "Warning! It will clear the contents of the table."
 }
