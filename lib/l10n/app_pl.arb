@@ -54,5 +54,6 @@
     "purple": "Fioletowy",
     "yellow": "Żółty",
     "white": "Biały",
-    "setnumberofplayers": "Ustaw liczbę graczy"
+    "setnumberofplayers": "Ustaw liczbę graczy",
+    "wipetable": "Uwaga! Zmiana wyczyści zawartość tabeli."
 }
