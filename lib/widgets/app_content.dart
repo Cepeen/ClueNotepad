@@ -179,6 +179,7 @@ class _AppContentState extends State<AppContent> {
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
                         (AppLocalizations.of(context).wipetable),
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.red, // You can change the color to match your warning style
                           fontWeight: FontWeight.bold,
