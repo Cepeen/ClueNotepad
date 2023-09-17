@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:notepad/ui/global/theme/app_theme.dart';
+import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 
 import 'main.dart';
 import 'widgets/clickable_table_cell.dart';
