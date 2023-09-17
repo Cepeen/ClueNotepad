@@ -127,7 +127,7 @@ class _AboutState extends State<About> {
   }
 
   _launchURL() async {
-    const url = 'https://flutter.io'; //add privacy policy url
+    const url = 'https://www.tomektomasik.pl/cluenotepadpp'; //add privacy policy url
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);

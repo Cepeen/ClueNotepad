@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pol.clue.notepad">
    <application
-        android:label="notepad"
+        android:label="clue_notepad"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:exported="true"
@@ -39,4 +39,5 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+        <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
