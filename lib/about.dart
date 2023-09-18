@@ -65,60 +65,64 @@ class _AboutState extends State<About> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                // Wrap Card with Expanded widget
                 child: Card(
                   color: Colors.blue[50],
                   child: Padding(
                     padding: EdgeInsets.all(70.0),
                     child: Container(
-                      child: new RichText(
-                        textAlign: TextAlign.center,
-                        text: new TextSpan(
-                          text: 'Clue Notepad version: $_version\n',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.normal,
+                      child: Column(// Use a Column widget
+                          children: <Widget>[
+                        Image.asset('assets/logo.png', height: 120, width: 120),
+                        SizedBox(height: 16),
+                        new RichText(
+                          textAlign: TextAlign.center,
+                          text: new TextSpan(
+                            text: 'Clue Notepad version: $_version\n',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: '\nCluedo Notepad is aplication created in',
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              TextSpan(
+                                text: ' flutter',
+                                style: TextStyle(color: Colors.blue),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    showAboutDialog(
+                                      context: context,
+                                      applicationIcon: const FlutterLogo(),
+                                      applicationName: 'Flutter',
+                                      applicationVersion: 'August 2019',
+                                      applicationLegalese: '\u{a9} 2014 The Flutter Authors',
+                                      children: aboutBoxChildren,
+                                    );
+                                  },
+                              ),
+                              TextSpan(
+                                text:
+                                    ".\n App is totally free and do not contain any advertisements.\n Application do not collect any data.\n As an user of Clue Notepad you agree with our",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              TextSpan(
+                                text: '\nprivacy policy',
+                                style: TextStyle(color: Colors.blue),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    _launchURL();
+                                  },
+                              ),
+                            ],
                           ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: '\nCluedo Notepad is aplication created in',
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            TextSpan(
-                              text: ' flutter',
-                              style: TextStyle(color: Colors.blue),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  showAboutDialog(
-                                    context: context,
-                                    applicationIcon: const FlutterLogo(),
-                                    applicationName: 'Flutter',
-                                    applicationVersion: 'August 2019',
-                                    applicationLegalese: '\u{a9} 2014 The Flutter Authors',
-                                    children: aboutBoxChildren,
-                                  );
-                                },
-                            ),
-                            TextSpan(
-                              text:
-                                  ".\n App is totally free and do not contain any advertisements.\n Application do not collect any data.\n As an user of Clue Notepad you agree with our",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            TextSpan(
-                              text: '\nprivacy policy',
-                              style: TextStyle(color: Colors.blue),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  _launchURL();
-                                },
-                            ),
-                          ],
                         ),
-                      ),
+                      ]),
                     ),
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),
