@@ -37,6 +37,8 @@ class _ClueNotepadState extends State<ClueNotepad> {
       supportedLocales: [
         Locale('en', ''),
         Locale('pl', ''),
+        Locale('de', ''),
+        Locale('fr', ''),
       ],
       title: ClueNotepad._title,
       home: AppContent(
