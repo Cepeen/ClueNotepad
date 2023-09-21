@@ -304,11 +304,6 @@ class _AppContentState extends State<AppContent> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
         }
         break;
-      case 5:
-        {
-          SystemNavigator.pop();
-        }
-        break;
       default:
     }
   }
@@ -329,7 +324,6 @@ class _AppContentState extends State<AppContent> {
               PopupMenuItem(value: 2, child: Text(AppLocalizations.of(context).choseedition)),
               PopupMenuItem(value: 3, child: Text(AppLocalizations.of(context).setcolor)),
               PopupMenuItem(value: 4, child: Text(AppLocalizations.of(context).about)),
-              PopupMenuItem(value: 5, child: Text(AppLocalizations.of(context).closeapp)),
             ],
           )
         ],
