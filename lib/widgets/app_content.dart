@@ -9,12 +9,14 @@ import '../tables.dart';
 
 class AppContent extends StatefulWidget {
   final ThemeData selectedTheme;
+  final int selectedVersion;
   final void Function(ThemeData) changeTheme;
   final int playersInitial;
 
   const AppContent({
     Key key,
     @required this.selectedTheme,
+    @required this.selectedVersion,
     @required this.changeTheme,
     @required this.playersInitial,
   }) : super(key: key);
