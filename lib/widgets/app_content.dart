@@ -312,9 +312,40 @@ class _AppContentState extends State<AppContent> {
 
   @override
   Widget build(BuildContext context) {
+    String versionText = AppLocalizations.of(context).classic;
+    if (selectedVersion == 1) {
+      versionText = AppLocalizations.of(context).hasbro;
+    }
+    if (selectedVersion == 2) {
+      versionText = AppLocalizations.of(context).discover;
+    }
+    if (selectedVersion == 3) {
+      versionText = AppLocalizations.of(context).classic;
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_title),
+      appBar: new AppBar(
+        centerTitle: false,
+        title: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(
+            _title,
+            style: TextStyle(
+              fontSize: 18.0, // Adjust font size as needed
+            ),
+          ),
+          GestureDetector(
+            child: Text(
+              versionText,
+              style: TextStyle(
+                fontSize: 10.0, // Adjust font size as needed
+                color: Colors.white, // Assuming you want white color
+              ),
+            ),
+            onTap: () {
+              print("");
+            },
+          )
+        ]),
         actions: [
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
