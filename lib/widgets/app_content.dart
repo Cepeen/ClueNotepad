@@ -53,7 +53,7 @@ class _AppContentState extends State<AppContent> {
               context: context,
               builder: (context) => AlertDialog(
                   backgroundColor: Colors.blue[50],
-                  title: FittedBox(child: Text((AppLocalizations.of(context).howmany))),
+                  title: FittedBox(child: Text((AppLocalizations.of(context).howMany))),
                   content: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,7 +123,7 @@ class _AppContentState extends State<AppContent> {
               builder: (BuildContext context) {
                 return SimpleDialog(
                   backgroundColor: Colors.blue[50],
-                  title: Text(AppLocalizations.of(context).choseedition),
+                  title: Text(AppLocalizations.of(context).choseEdition),
                   children: <Widget>[
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -163,6 +163,19 @@ class _AppContentState extends State<AppContent> {
                                 }));
                               },
                               child: Text(AppLocalizations.of(context).classic),
+                            ))),
+                    SimpleDialogOption(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                            width: 40.0,
+                            height: 40.0,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(setState(() {
+                                  selectedVersion = 4;
+                                }));
+                              },
+                              child: Text(AppLocalizations.of(context).theSimpsonsEdition),
                             ))),
                   ],
                 );
@@ -324,6 +337,9 @@ class _AppContentState extends State<AppContent> {
     if (selectedVersion == 3) {
       versionText = AppLocalizations.of(context).classic;
     }
+    if (selectedVersion == 4) {
+      versionText = AppLocalizations.of(context).theSimpsonsEdition;
+    }
 
     return Scaffold(
       appBar: new AppBar(
@@ -352,9 +368,9 @@ class _AppContentState extends State<AppContent> {
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem(value: 0, child: Text(AppLocalizations.of(context).cleartabbles)),
+              PopupMenuItem(value: 0, child: Text(AppLocalizations.of(context).clearTabbles)),
               PopupMenuItem(value: 1, child: Text(AppLocalizations.of(context).setPlayers)),
-              PopupMenuItem(value: 2, child: Text(AppLocalizations.of(context).choseedition)),
+              PopupMenuItem(value: 2, child: Text(AppLocalizations.of(context).choseEdition)),
               PopupMenuItem(value: 3, child: Text(AppLocalizations.of(context).setcolor)),
               PopupMenuItem(value: 4, child: Text(AppLocalizations.of(context).about)),
             ],

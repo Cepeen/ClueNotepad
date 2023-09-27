@@ -1,12 +1,12 @@
 {
     "pool": "Pool",
     "spa": "Spa",
-    "guesthouse": "Guest house",
+    "guestHouse": "Guest house",
     "theatre": "Theatre",
     "observatory": "Observatory",
     "livingroom": "Living room",
-    "cleartabbles": "Clear tabbles",
-    "choseedition": "Chose edition",
+    "clearTabbles": "Clear tabbles",
+    "choseEdition": "Chose edition",
     "discover": "Discover the Secrets",
     "classic": "The Classic Mystery Game",
     "hasbro": "Hasbro Version",
@@ -14,9 +14,9 @@
     "where": "Where?",
     "who": "Who?",
     "player": "Player",
-    "howmany": "How many friends will play?",
+    "howMany": "How many friends will play?",
     "clear": "Clear",
-    "closeapp": "Close app",
+    "closeApp": "Close app",
     "setPlayers": "Set players",
     "helloWorld": "Hello World",
     "you": "You",
@@ -54,6 +54,26 @@
     "purple": "Purple",
     "yellow": "Yellow",
     "white": "White",
-    "setnumberofplayers": "set number of players",
-    "wipetable": "Warning! It will clear the contents of the table."
+    "setNumberOfPlayers": "set number of players",
+    "wipetable": "Warning! It will clear the contents of the table.",
+  
+
+    "theSimpsonsEdition": "The Simpsons Edition",
+    "donut": "Donut",
+    "slingshot": "Slingshot",
+    "saxophone": "Saxophone",
+    "tvRemote": "TV Remote",
+    "beehive": "Beehive",
+    "bowlingBall": "Bowling Ball",
+    "krustyBurger": "Krusty Burger",
+    
+    "simpsonLivingRoom": "Simpson Living Room",
+    "moesTavern": "Moe's Tavern",
+    "kwikEMart": "Kwik-E-Mart",
+    "springfieldElementarySchool": "Springfield Elementary School",
+    "springfieldNuclearPowerPlant": "Springfield Nuclear Power Plant",
+    "flandersHouse": "Flanders' House",
+    "krustyland": "Krustyland"
+
+    
 }

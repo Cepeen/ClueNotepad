@@ -17,6 +17,7 @@ class Notepad extends StatefulWidget {
 class _NotepadState extends State<Notepad> {
   @override
   Widget build(BuildContext context) {
+//hasbro
     var ktoArray = ['Green', 'Mustard', 'Orchid', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray = [
       AppLocalizations.of(context).candlestick,
@@ -38,6 +39,7 @@ class _NotepadState extends State<Notepad> {
       AppLocalizations.of(context).study
     ];
 
+//discover the secret
     var ktoArray2 = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray2 = [
       AppLocalizations.of(context).candlestick,
@@ -51,7 +53,7 @@ class _NotepadState extends State<Notepad> {
       AppLocalizations.of(context).dumbbell
     ];
     var gdzieArray2 = [
-      AppLocalizations.of(context).guesthouse,
+      AppLocalizations.of(context).guestHouse,
       AppLocalizations.of(context).theatre,
       AppLocalizations.of(context).spa,
       AppLocalizations.of(context).diningRoom,
@@ -62,6 +64,7 @@ class _NotepadState extends State<Notepad> {
       AppLocalizations.of(context).observatory
     ];
 
+//classic
     var ktoArray3 = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray3 = [
       AppLocalizations.of(context).candlestick,
@@ -82,6 +85,28 @@ class _NotepadState extends State<Notepad> {
       AppLocalizations.of(context).library,
       AppLocalizations.of(context).ballroom,
       AppLocalizations.of(context).study
+    ];
+
+//simpsons
+    var ktoArraySimpsons = ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie', 'Ned Flanders'];
+    var czymArraySimpsons = [
+      AppLocalizations.of(context).donut,
+      AppLocalizations.of(context).slingshot,
+      AppLocalizations.of(context).saxophone,
+      AppLocalizations.of(context).tvRemote,
+      AppLocalizations.of(context).beehive,
+      AppLocalizations.of(context).bowlingBall,
+      AppLocalizations.of(context).krustyBurger
+    ];
+
+    var gdzieArraySimpsons = [
+      AppLocalizations.of(context).simpsonLivingRoom,
+      AppLocalizations.of(context).moesTavern,
+      AppLocalizations.of(context).kwikEMart,
+      AppLocalizations.of(context).springfieldElementarySchool,
+      AppLocalizations.of(context).springfieldNuclearPowerPlant,
+      AppLocalizations.of(context).flandersHouse,
+      AppLocalizations.of(context).krustyland
     ];
 
     return SingleChildScrollView(
@@ -150,6 +175,16 @@ class _NotepadState extends State<Notepad> {
               for (var text in czymArray2) createClickableTableRow(text, widget.numberOfPlayers),
               createSectionTableRow(AppLocalizations.of(context).where, widget.numberOfPlayers),
               for (var text in gdzieArray2) createClickableTableRow(text, widget.numberOfPlayers),
+            ] else if (selectedVersion == 4) ...[
+              createSectionTableRow(AppLocalizations.of(context).who, widget.numberOfPlayers),
+              for (var text in ktoArraySimpsons)
+                createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).how, widget.numberOfPlayers),
+              for (var text in czymArraySimpsons)
+                createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).where, widget.numberOfPlayers),
+              for (var text in gdzieArraySimpsons)
+                createClickableTableRow(text, widget.numberOfPlayers),
             ] else ...[
               createSectionTableRow(AppLocalizations.of(context).who, widget.numberOfPlayers),
               for (var text in ktoArray3) createClickableTableRow(text, widget.numberOfPlayers),
