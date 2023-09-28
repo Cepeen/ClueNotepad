@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
@@ -109,6 +110,37 @@ class _NotepadState extends State<Notepad> {
       AppLocalizations.of(context).krustyland
     ];
 
+    var ktoArrayHarryPotter = [
+      'Harry Potter',
+      'Hermione Granger',
+      'Ron Weasley',
+      'Ginny Weasley',
+      'Draco Malfoy',
+      'Luna Lovegood',
+      'Nymphadora Tonks'
+    ];
+
+    var czymArrayHarryPotter = [
+      AppLocalizations.of(context).wand,
+      AppLocalizations.of(context).broomstick,
+      AppLocalizations.of(context).potion,
+      AppLocalizations.of(context).spellbook,
+      AppLocalizations.of(context).cauldron,
+      AppLocalizations.of(context).invisibilityCloak,
+      AppLocalizations.of(context).timeTurner
+    ];
+
+    var gdzieArrayHarryPotter = [
+      AppLocalizations.of(context).gryffindorCommonRoom,
+      AppLocalizations.of(context).slytherinCommonRoom,
+      AppLocalizations.of(context).ravenclawCommonRoom,
+      AppLocalizations.of(context).hufflepuffCommonRoom,
+      AppLocalizations.of(context).greatHall,
+      AppLocalizations.of(context).forbiddenForest,
+      AppLocalizations.of(context).whompingWillow,
+      AppLocalizations.of(context).roomOfRequirement
+    ];
+
     return SingleChildScrollView(
       child: Table(
           border: TableBorder.all(width: 2, color: Color.fromARGB(255, 131, 131, 131)),
@@ -185,6 +217,16 @@ class _NotepadState extends State<Notepad> {
               createSectionTableRow(AppLocalizations.of(context).where, widget.numberOfPlayers),
               for (var text in gdzieArraySimpsons)
                 createClickableTableRow(text, widget.numberOfPlayers),
+            ] else if (selectedVersion == 5) ...[
+              createSectionTableRow(AppLocalizations.of(context).who, widget.numberOfPlayers),
+              for (var text in ktoArrayHarryPotter)
+                createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).how, widget.numberOfPlayers),
+              for (var text in czymArrayHarryPotter)
+                createClickableTableRow(text, widget.numberOfPlayers),
+              createSectionTableRow(AppLocalizations.of(context).where, widget.numberOfPlayers),
+              for (var text in gdzieArrayHarryPotter)
+                createClickableTableRow(text, widget.numberOfPlayers),
             ] else ...[
               createSectionTableRow(AppLocalizations.of(context).who, widget.numberOfPlayers),
               for (var text in ktoArray3) createClickableTableRow(text, widget.numberOfPlayers),
@@ -209,7 +251,7 @@ TableRow createClickableTableRow(String text, int playersAmount) {
         child: Container(
           alignment: Alignment.center,
           padding: EdgeInsets.all(2.0),
-          child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
+          child: AutoSizeText(text, style: TextStyle(fontWeight: FontWeight.bold)),
           height: 32,
           color: Colors.white,
         ),

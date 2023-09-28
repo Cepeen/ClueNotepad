@@ -73,7 +73,30 @@
     "springfieldElementarySchool": "Springfield Elementary School",
     "springfieldNuclearPowerPlant": "Springfield Nuclear Power Plant",
     "flandersHouse": "Flanders' House",
-    "krustyland": "Krustyland"
+    "krustyland": "Krustyland",
+
+
+    "harryPotterEdition": "Harry Potter Edition",
+    "wand": "Wand",
+    "broomstick": "Broomstick",
+    "potion": "Potion",
+    "spellbook": "Spellbook",
+    "cauldron": "Cauldron",
+    "invisibilityCloak": "Invisibility Cloak",
+    "timeTurner": "Time Turner",
+        
+    "gryffindorCommonRoom": "Gryffindor Common Room",
+    "slytherinCommonRoom": "Slytherin Common Room",
+    "ravenclawCommonRoom": "Ravenclaw Common Room",
+    "hufflepuffCommonRoom": "Hufflepuff Common Room",
+    "greatHall": "Great Hall",
+    "forbiddenForest": "Forbidden Forest",
+    "whompingWillow": "Whomping Willow",
+    "roomOfRequirement": "Room of Requirement"
+
+
+}
+      
+
 
     
-}

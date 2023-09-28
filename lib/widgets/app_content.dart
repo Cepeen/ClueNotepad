@@ -177,6 +177,19 @@ class _AppContentState extends State<AppContent> {
                               },
                               child: Text(AppLocalizations.of(context).theSimpsonsEdition),
                             ))),
+                    SimpleDialogOption(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                            width: 40.0,
+                            height: 40.0,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(setState(() {
+                                  selectedVersion = 5;
+                                }));
+                              },
+                              child: Text(AppLocalizations.of(context).harryPotterEdition),
+                            ))),
                   ],
                 );
               });
@@ -339,6 +352,9 @@ class _AppContentState extends State<AppContent> {
     }
     if (selectedVersion == 4) {
       versionText = AppLocalizations.of(context).theSimpsonsEdition;
+    }
+    if (selectedVersion == 5) {
+      versionText = AppLocalizations.of(context).harryPotterEdition;
     }
 
     return Scaffold(

@@ -38,7 +38,7 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   theme_tailor_annotation: ^2.0.0
   hooks_riverpod: ^2.3.6
-
+  auto_size_text: ^3.0.0
 
 
 dev_dependencies:
