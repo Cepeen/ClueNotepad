@@ -49,7 +49,7 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
             });
       },
       child: Container(
-        height: 32,
+        height: 30,
         child: Center(
             child: index == 0
                 ? Container()

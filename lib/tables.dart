@@ -251,7 +251,10 @@ TableRow createClickableTableRow(String text, int playersAmount) {
         child: Container(
           alignment: Alignment.center,
           padding: EdgeInsets.all(2.0),
-          child: AutoSizeText(text, style: TextStyle(fontWeight: FontWeight.bold)),
+          child: AutoSizeText(text,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              minFontSize: 8,
+              maxLines: 2),
           height: 32,
           color: Colors.white,
         ),
