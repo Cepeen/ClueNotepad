@@ -55,5 +55,42 @@
     "yellow": "Żółty",
     "white": "Biały",
     "setNumberOfPlayers": "Ustaw liczbę graczy",
-    "wipetable": "Uwaga! Zmiana wyczyści zawartość tabeli."
+    "wipetable": "Uwaga! Zmiana wyczyści zawartość tabeli.",
+    "areyousure": "Napewno? Stan gry zostanie utracony!",
+
+
+    "theSimpsonsEdition": "Edycja Simpsonów",
+    "donut": "Pączek",
+    "slingshot": "Proca",
+    "saxophone": "Saksofon",
+    "tvRemote": "Pilot do TV",
+    "beehive": "Ul",
+    "bowlingBall": "Kula do kręgli",
+    "krustyBurger": "Krusty Burger",
+    "simpsonLivingRoom": "Pokój dzienny Simpsonów",
+    "moesTavern": "Tawerna Moego",
+    "kwikEMart": "Kwik-E-Mart",
+    "springfieldElementarySchool": "Szkoła Podstawowa Springfield",
+    "springfieldNuclearPowerPlant": "Elektrownia jądrowa w Springfield",
+    "flandersHouse": "Dom Flandersa",
+    "krustyland": "Krustyland",
+
+
+    "harryPotterEdition": "Edycja Harry'ego Pottera",
+    "wand": "Różdżka",
+    "broomstick": "Miotła",
+    "potion": "Eliksir",
+    "spellbook": "Księga zaklęć",
+    "cauldron": "Kocioł",
+    "invisibilityCloak": "Niewidka",
+    "timeTurner": "Zegar czasu",
+    "gryffindorCommonRoom": "Pokój Wspólny Gryffindoru",
+    "slytherinCommonRoom": "Pokój Wspólny Slytherinu",
+    "ravenclawCommonRoom": "Pokój Wspólny Ravenclawu",
+    "hufflepuffCommonRoom": "Pokój Wspólny Hufflepuffu",
+    "greatHall": "Wielka Sala",
+    "forbiddenForest": "Zakazany Las",
+    "whompingWillow": "Wierzba Bijąca",
+    "roomOfRequirement": "Pokój Wymagań"
+
 }

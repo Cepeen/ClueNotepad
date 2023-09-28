@@ -56,7 +56,7 @@
     "white": "White",
     "setNumberOfPlayers": "set number of players",
     "wipetable": "Warning! It will clear the contents of the table.",
-  
+    "areyousure": "Are you sure? Game state will be lost!",
 
     "theSimpsonsEdition": "The Simpsons Edition",
     "donut": "Donut",

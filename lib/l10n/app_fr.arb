@@ -55,5 +55,44 @@
     "yellow": "Jaune",
     "white": "Blanc",
     "setNumberOfPlayers": "Définir le nombre de joueurs",
-    "wipetable": "Attention ! Cela effacera le contenu de la table."
+    "wipetable": "Attention ! Cela effacera le contenu de la table.",
+    "areyousure": "Êtes-vous sûr ? L'état du jeu sera perdu !",
+
+    "theSimpsonsEdition": "L'édition des Simpson",
+    "donut": "Donut",
+    "slingshot": "Lance-pierre",
+    "saxophone": "Saxophone",
+    "tvRemote": "Télécommande TV",
+    "beehive": "Ruche",
+    "bowlingBall": "Boule de bowling",
+    "krustyBurger": "Krusty Burger",
+    "simpsonLivingRoom": "Salle de séjour des Simpson",
+    "moesTavern": "Taverne de Moe",
+    "kwikEMart": "Kwik-E-Mart",
+    "springfieldElementarySchool": "École élémentaire de Springfield",
+    "springfieldNuclearPowerPlant": "Centrale nucléaire de Springfield",
+    "flandersHouse": "Maison de Flanders",
+    "krustyland": "Krustyland",
+
+
+    "harryPotterEdition": "Édition Harry Potter",
+  "wand": "Baguette magique",
+  "broomstick": "Balai volant",
+  "potion": "Potion",
+  "spellbook": "Livre de sorts",
+  "cauldron": "Chaudron",
+  "invisibilityCloak": "Cape d'invisibilité",
+  "timeTurner": "Retourneur de temps",
+  "gryffindorCommonRoom": "Salle commune de Gryffondor",
+  "slytherinCommonRoom": "Salle commune de Serpentard",
+  "ravenclawCommonRoom": "Salle commune de Serdaigle",
+  "hufflepuffCommonRoom": "Salle commune de Poufsouffle",
+  "greatHall": "Grande Salle",
+  "forbiddenForest": "Forêt interdite",
+  "whompingWillow": "Saule cogneur",
+  "roomOfRequirement": "Pièce sur demande"
+
+
+
+
     }

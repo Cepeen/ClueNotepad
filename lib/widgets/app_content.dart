@@ -32,19 +32,44 @@ class _AppContentState extends State<AppContent> {
         {
           showDialog(
               context: context,
-              builder: (context) => AlertDialog(actions: <Widget>[
+              builder: (context) => AlertDialog(
+                      content: Column(mainAxisSize: MainAxisSize.min, children: [
+                    SizedBox(height: 16), // Add space above the text
+                    Text(
+                      AppLocalizations.of(context).areyousure,
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(height: 16), // Add space below the text
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        TextButton(
-                            child: Text(AppLocalizations.of(context).clear),
-                            onPressed: () => Navigator.of(context).pop(setState(() {
-                                  playersInitial = playersInitial;
-                                }))),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(setState(() {
+                              playersInitial = playersInitial;
+                            })); // Close the dialog
+                          },
+                          child: Text(
+                            'Yes',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        SizedBox(width: 18),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.grey,
+                            ),
+                            onPressed: () {
+                              // Handle 'No' button press here
+                              Navigator.of(context).pop();
+                            },
+                            child: Text(
+                              'No',
+                              style: TextStyle(color: Colors.white),
+                            ))
                       ],
                     ),
-                  ]));
+                  ])));
         }
         break;
       case 1:

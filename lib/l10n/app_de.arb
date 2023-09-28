@@ -55,5 +55,43 @@
     "yellow": "Gelb",
     "white": "Weiß",
     "setNumberOfPlayers": "Anzahl der Spieler festlegen",
-    "wipetable": "Achtung! Der Inhalt des Tisches wird gelöscht."
-    }
+    "wipetable": "Achtung! Der Inhalt des Tisches wird gelöscht.",
+    "areyousure": "Sind Sie sicher? Der Spielstand geht verloren!",
+    
+        "theSimpsonsEdition": "Die Simpsons Ausgabe",
+        "donut": "Donut",
+        "slingshot": "Schleuder",
+        "saxophone": "Saxophon",
+        "tvRemote": "Fernbedienung",
+        "beehive": "Bienenstock",
+        "bowlingBall": "Bowlingkugel",
+        "krustyBurger": "Krusty Burger",
+        "simpsonLivingRoom": "Simpson Wohnzimmer",
+        "moesTavern": "Moes Taverne",
+        "kwikEMart": "Kwik-E-Mart",
+        "springfieldElementarySchool": "Springfield Grundschule",
+        "springfieldNuclearPowerPlant": "Springfield Atomkraftwerk",
+        "flandersHouse": "Flanders Haus",
+        "krustyland": "Krustyland",
+
+
+        "harryPotterEdition": "Harry Potter Ausgabe",
+        "wand": "Zauberstab",
+        "broomstick": "Besen",
+        "potion": "Trank",
+        "spellbook": "Zauberbuch",
+        "cauldron": "Kessel",
+        "invisibilityCloak": "Tarnumhang",
+        "timeTurner": "Zeitumkehrer",
+        "gryffindorCommonRoom": "Gryffindor Gemeinschaftsraum",
+        "slytherinCommonRoom": "Slytherin Gemeinschaftsraum",
+        "ravenclawCommonRoom": "Ravenclaw Gemeinschaftsraum",
+        "hufflepuffCommonRoom": "Hufflepuff Gemeinschaftsraum",
+        "greatHall": "Große Halle",
+        "forbiddenForest": "Verbotener Wald",
+        "whompingWillow": "Peitschende Weide",
+        "roomOfRequirement": "Raum der Wünsche"
+      }
+
+
+    
