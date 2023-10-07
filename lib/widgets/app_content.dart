@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 
 import '../about.dart';
@@ -35,7 +34,7 @@ class _AppContentState extends State<AppContent> {
                       content: Column(mainAxisSize: MainAxisSize.min, children: [
                     SizedBox(height: 16), // Add space above the text
                     Text(
-                      AppLocalizations.of(context)!.areyousure,
+                      context.l10n!.areyousure,
                       style: TextStyle(fontSize: 18),
                     ),
                     SizedBox(height: 16), // Add space below the text
@@ -75,7 +74,7 @@ class _AppContentState extends State<AppContent> {
               context: context,
               builder: (context) => AlertDialog(
                   backgroundColor: Colors.blue[50],
-                  title: FittedBox(child: Text((AppLocalizations.of(context)!.howMany))),
+                  title: FittedBox(child: Text((context.l10n!.howMany))),
                   content: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -160,7 +159,7 @@ class _AppContentState extends State<AppContent> {
               builder: (BuildContext context) {
                 return SimpleDialog(
                   backgroundColor: Colors.blue[50],
-                  title: Text(AppLocalizations.of(context)!.choseEdition),
+                  title: Text(context.l10n!.choseEdition),
                   children: <Widget>[
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -174,7 +173,7 @@ class _AppContentState extends State<AppContent> {
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
-                              child: Text(AppLocalizations.of(context)!.hasbro),
+                              child: Text(context.l10n!.hasbro),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -188,7 +187,7 @@ class _AppContentState extends State<AppContent> {
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
-                              child: Text(AppLocalizations.of(context)!.discover),
+                              child: Text(context.l10n!.discover),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -202,7 +201,7 @@ class _AppContentState extends State<AppContent> {
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
-                              child: Text(AppLocalizations.of(context)!.classic),
+                              child: Text(context.l10n!.classic),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -216,7 +215,7 @@ class _AppContentState extends State<AppContent> {
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
-                              child: Text(AppLocalizations.of(context)!.theSimpsonsEdition),
+                              child: Text(context.l10n!.theSimpsonsEdition),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -230,7 +229,7 @@ class _AppContentState extends State<AppContent> {
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
-                              child: Text(AppLocalizations.of(context)!.harryPotterEdition),
+                              child: Text(context.l10n!.harryPotterEdition),
                             ))),
                   ],
                 );
@@ -248,10 +247,11 @@ class _AppContentState extends State<AppContent> {
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        (AppLocalizations.of(context)!.setcolor),
+                        (context.l10n!.setcolor),
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: const Color.fromARGB(255, 0, 0, 0), // You can change the color to match your warning style
+                          color: const Color.fromARGB(
+                              255, 0, 0, 0), // You can change the color to match your warning style
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -273,7 +273,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(blueTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context)!.blue),
+                              child: Text(context.l10n!.blue),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -290,7 +290,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(redTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context)!.red),
+                              child: Text(context.l10n!.red),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -307,7 +307,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(greenTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context)!.green),
+                              child: Text(context.l10n!.green),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -324,7 +324,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(yellowTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context)!.yellow,
+                              child: Text(context.l10n!.yellow,
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                             ))),
@@ -343,7 +343,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(purpleTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context)!.purple),
+                              child: Text(context.l10n!.purple),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -360,7 +360,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(whiteTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context)!.white,
+                              child: Text(context.l10n!.white,
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                             ))),
@@ -382,21 +382,21 @@ class _AppContentState extends State<AppContent> {
 
   @override
   Widget build(BuildContext context) {
-    String versionText = AppLocalizations.of(context)!.classic;
+    String versionText = context.l10n!.classic;
     if (selectedVersion == 1) {
-      versionText = AppLocalizations.of(context)!.hasbro;
+      versionText = context.l10n!.hasbro;
     }
     if (selectedVersion == 2) {
-      versionText = AppLocalizations.of(context)!.discover;
+      versionText = context.l10n!.discover;
     }
     if (selectedVersion == 3) {
-      versionText = AppLocalizations.of(context)!.classic;
+      versionText = context.l10n!.classic;
     }
     if (selectedVersion == 4) {
-      versionText = AppLocalizations.of(context)!.theSimpsonsEdition;
+      versionText = context.l10n!.theSimpsonsEdition;
     }
     if (selectedVersion == 5) {
-      versionText = AppLocalizations.of(context)!.harryPotterEdition;
+      versionText = context.l10n!.harryPotterEdition;
     }
 
     return Scaffold(
@@ -426,11 +426,11 @@ class _AppContentState extends State<AppContent> {
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem(value: 0, child: Text(AppLocalizations.of(context)!.clearTabbles)),
-              PopupMenuItem(value: 1, child: Text(AppLocalizations.of(context)!.setPlayers)),
-              PopupMenuItem(value: 2, child: Text(AppLocalizations.of(context)!.choseEdition)),
-              PopupMenuItem(value: 3, child: Text(AppLocalizations.of(context)!.setcolor)),
-              PopupMenuItem(value: 4, child: Text(AppLocalizations.of(context)!.about)),
+              PopupMenuItem(value: 0, child: Text(context.l10n!.clearTabbles)),
+              PopupMenuItem(value: 1, child: Text(context.l10n!.setPlayers)),
+              PopupMenuItem(value: 2, child: Text(context.l10n!.choseEdition)),
+              PopupMenuItem(value: 3, child: Text(context.l10n!.setcolor)),
+              PopupMenuItem(value: 4, child: Text(context.l10n!.about)),
             ],
           )
         ],

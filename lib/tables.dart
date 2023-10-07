@@ -6,6 +6,10 @@ import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 import 'main.dart';
 import 'widgets/clickable_table_cell.dart';
 
+extension AppLocalizationsX on BuildContext {
+  AppLocalizations? get l10n => AppLocalizations.of(this);
+}
+
 class Notepad extends StatefulWidget {
   Notepad(this.title, this.numberOfPlayers);
   final String title;
@@ -21,93 +25,93 @@ class _NotepadState extends State<Notepad> {
 //hasbro
     var ktoArray = ['Green', 'Mustard', 'Orchid', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray = [
-      AppLocalizations.of(context)?.candlestick,
-      AppLocalizations.of(context)?.dagger,
-      AppLocalizations.of(context)?.leadPipe,
-      AppLocalizations.of(context)?.revolver,
-      AppLocalizations.of(context)?.rope,
-      AppLocalizations.of(context)?.wrench
+      context.l10n?.candlestick,
+      context.l10n?.dagger,
+      context.l10n?.leadPipe,
+      context.l10n?.revolver,
+      context.l10n?.rope,
+      context.l10n?.wrench
     ];
     var gdzieArray = [
-      AppLocalizations.of(context)?.lounge,
-      AppLocalizations.of(context)?.billiardRoom,
-      AppLocalizations.of(context)?.conservatory,
-      AppLocalizations.of(context)?.diningRoom,
-      AppLocalizations.of(context)?.hall,
-      AppLocalizations.of(context)?.kitchen,
-      AppLocalizations.of(context)?.library,
-      AppLocalizations.of(context)?.weranda,
-      AppLocalizations.of(context)?.study
+      context.l10n?.lounge,
+      context.l10n?.billiardRoom,
+      context.l10n?.conservatory,
+      context.l10n?.diningRoom,
+      context.l10n?.hall,
+      context.l10n?.kitchen,
+      context.l10n?.library,
+      context.l10n?.weranda,
+      context.l10n?.study
     ];
 
 //discover the secret
     var ktoArray2 = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray2 = [
-      AppLocalizations.of(context)?.candlestick,
-      AppLocalizations.of(context)?.axe,
-      AppLocalizations.of(context)?.poison,
-      AppLocalizations.of(context)?.trophy,
-      AppLocalizations.of(context)?.knife,
-      AppLocalizations.of(context)?.bat,
-      AppLocalizations.of(context)?.pistol,
-      AppLocalizations.of(context)?.rope,
-      AppLocalizations.of(context)?.dumbbell
+      context.l10n?.candlestick,
+      context.l10n?.axe,
+      context.l10n?.poison,
+      context.l10n?.trophy,
+      context.l10n?.knife,
+      context.l10n?.bat,
+      context.l10n?.pistol,
+      context.l10n?.rope,
+      context.l10n?.dumbbell
     ];
     var gdzieArray2 = [
-      AppLocalizations.of(context)?.guestHouse,
-      AppLocalizations.of(context)?.theatre,
-      AppLocalizations.of(context)?.spa,
-      AppLocalizations.of(context)?.diningRoom,
-      AppLocalizations.of(context)?.hall,
-      AppLocalizations.of(context)?.kitchen,
-      AppLocalizations.of(context)?.livingroom,
-      AppLocalizations.of(context)?.weranda,
-      AppLocalizations.of(context)?.observatory
+      context.l10n?.guestHouse,
+      context.l10n?.theatre,
+      context.l10n?.spa,
+      context.l10n?.diningRoom,
+      context.l10n?.hall,
+      context.l10n?.kitchen,
+      context.l10n?.livingroom,
+      context.l10n?.weranda,
+      context.l10n?.observatory
     ];
 
 //classic
     var ktoArray3 = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
     var czymArray3 = [
-      AppLocalizations.of(context)?.candlestick,
-      AppLocalizations.of(context)?.dagger,
-      AppLocalizations.of(context)?.leadPipe,
-      AppLocalizations.of(context)?.revolver,
-      AppLocalizations.of(context)?.rope,
-      AppLocalizations.of(context)?.wrench
+      context.l10n?.candlestick,
+      context.l10n?.dagger,
+      context.l10n?.leadPipe,
+      context.l10n?.revolver,
+      context.l10n?.rope,
+      context.l10n?.wrench
     ];
     var gdzieArray3 = [
-      AppLocalizations.of(context)?.lounge,
-      AppLocalizations.of(context)?.cellar,
-      AppLocalizations.of(context)?.billiardRoom,
-      AppLocalizations.of(context)?.conservatory,
-      AppLocalizations.of(context)?.diningRoom,
-      AppLocalizations.of(context)?.hall,
-      AppLocalizations.of(context)?.kitchen,
-      AppLocalizations.of(context)?.library,
-      AppLocalizations.of(context)?.ballroom,
-      AppLocalizations.of(context)?.study
+      context.l10n?.lounge,
+      context.l10n?.cellar,
+      context.l10n?.billiardRoom,
+      context.l10n?.conservatory,
+      context.l10n?.diningRoom,
+      context.l10n?.hall,
+      context.l10n?.kitchen,
+      context.l10n?.library,
+      context.l10n?.ballroom,
+      context.l10n?.study
     ];
 
 //simpsons
     var ktoArraySimpsons = ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie', 'Ned Flanders'];
     var czymArraySimpsons = [
-      AppLocalizations.of(context)?.donut,
-      AppLocalizations.of(context)?.slingshot,
-      AppLocalizations.of(context)?.saxophone,
-      AppLocalizations.of(context)?.tvRemote,
-      AppLocalizations.of(context)?.beehive,
-      AppLocalizations.of(context)?.bowlingBall,
-      AppLocalizations.of(context)?.krustyBurger
+      context.l10n?.donut,
+      context.l10n?.slingshot,
+      context.l10n?.saxophone,
+      context.l10n?.tvRemote,
+      context.l10n?.beehive,
+      context.l10n?.bowlingBall,
+      context.l10n?.krustyBurger
     ];
 
     var gdzieArraySimpsons = [
-      AppLocalizations.of(context)?.simpsonLivingRoom,
-      AppLocalizations.of(context)?.moesTavern,
-      AppLocalizations.of(context)?.kwikEMart,
-      AppLocalizations.of(context)?.springfieldElementarySchool,
-      AppLocalizations.of(context)?.springfieldNuclearPowerPlant,
-      AppLocalizations.of(context)?.flandersHouse,
-      AppLocalizations.of(context)?.krustyland
+      context.l10n?.simpsonLivingRoom,
+      context.l10n?.moesTavern,
+      context.l10n?.kwikEMart,
+      context.l10n?.springfieldElementarySchool,
+      context.l10n?.springfieldNuclearPowerPlant,
+      context.l10n?.flandersHouse,
+      context.l10n?.krustyland
     ];
 
     var ktoArrayHarryPotter = [
@@ -121,24 +125,24 @@ class _NotepadState extends State<Notepad> {
     ];
 
     var czymArrayHarryPotter = [
-      AppLocalizations.of(context)?.wand,
-      AppLocalizations.of(context)?.broomstick,
-      AppLocalizations.of(context)?.potion,
-      AppLocalizations.of(context)?.spellbook,
-      AppLocalizations.of(context)?.cauldron,
-      AppLocalizations.of(context)?.invisibilityCloak,
-      AppLocalizations.of(context)?.timeTurner
+      context.l10n?.wand,
+      context.l10n?.broomstick,
+      context.l10n?.potion,
+      context.l10n?.spellbook,
+      context.l10n?.cauldron,
+      context.l10n?.invisibilityCloak,
+      context.l10n?.timeTurner
     ];
 
     var gdzieArrayHarryPotter = [
-      AppLocalizations.of(context)?.gryffindorCommonRoom,
-      AppLocalizations.of(context)?.slytherinCommonRoom,
-      AppLocalizations.of(context)?.ravenclawCommonRoom,
-      AppLocalizations.of(context)?.hufflepuffCommonRoom,
-      AppLocalizations.of(context)?.greatHall,
-      AppLocalizations.of(context)?.forbiddenForest,
-      AppLocalizations.of(context)?.whompingWillow,
-      AppLocalizations.of(context)?.roomOfRequirement
+      context.l10n?.gryffindorCommonRoom,
+      context.l10n?.slytherinCommonRoom,
+      context.l10n?.ravenclawCommonRoom,
+      context.l10n?.hufflepuffCommonRoom,
+      context.l10n?.greatHall,
+      context.l10n?.forbiddenForest,
+      context.l10n?.whompingWillow,
+      context.l10n?.roomOfRequirement
     ];
 
     return SingleChildScrollView(
@@ -155,7 +159,7 @@ class _NotepadState extends State<Notepad> {
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(2.0),
-                  child: Text(AppLocalizations.of(context)!.mansion,
+                  child: Text(context.l10n!.mansion,
                       style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
                   height: 32,
                 ),
@@ -172,13 +176,13 @@ class _NotepadState extends State<Notepad> {
                             errorBorder: InputBorder.none,
                             disabledBorder: InputBorder.none,
                             contentPadding: EdgeInsets.only(left: 3, bottom: 10, top: 0, right: 3),
-                            hintText: AppLocalizations.of(context)?.player)),
+                            hintText: context.l10n?.player)),
                     height: 32,
                   ),
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(2.0),
-                  child: Text(AppLocalizations.of(context)!.you,
+                  child: Text(context.l10n!.you,
                       style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                   height: 32,
                 ),
@@ -194,45 +198,45 @@ class _NotepadState extends State<Notepad> {
               ],
             ),
             if (selectedVersion == 1) ...[
-              createSectionTableRow(AppLocalizations.of(context)!.who, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
               for (var text in ktoArray) createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
               for (var text in czymArray) createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
               for (var text in gdzieArray) createClickableTableRow(text!, widget.numberOfPlayers),
             ] else if (selectedVersion == 2) ...[
-              createSectionTableRow(AppLocalizations.of(context)!.who, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
               for (var text in ktoArray2) createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
               for (var text in czymArray2) createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
               for (var text in gdzieArray2) createClickableTableRow(text!, widget.numberOfPlayers),
             ] else if (selectedVersion == 4) ...[
-              createSectionTableRow(AppLocalizations.of(context)!.who, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
               for (var text in ktoArraySimpsons)
                 createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
               for (var text in czymArraySimpsons)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
               for (var text in gdzieArraySimpsons)
                 createClickableTableRow(text!, widget.numberOfPlayers),
             ] else if (selectedVersion == 5) ...[
-              createSectionTableRow(AppLocalizations.of(context)!.who, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
               for (var text in ktoArrayHarryPotter)
                 createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
               for (var text in czymArrayHarryPotter)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
               for (var text in gdzieArrayHarryPotter)
                 createClickableTableRow(text!, widget.numberOfPlayers),
             ] else ...[
-              createSectionTableRow(AppLocalizations.of(context)!.who, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
               for (var text in ktoArray3) createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
               for (var text in czymArray3) createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(AppLocalizations.of(context)!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
               for (var text in gdzieArray3) createClickableTableRow(text!, widget.numberOfPlayers),
             ]
           ]),

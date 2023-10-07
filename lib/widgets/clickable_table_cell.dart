@@ -1,5 +1,6 @@
+import 'package:clue_notepad/tables.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ClickableTableCell extends StatefulWidget {
   @override
@@ -40,7 +41,7 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
                               Navigator.of(context).pop();
                             }))),
                     TextButton(
-                        child: Text(AppLocalizations.of(context)!.clear),
+                        child: Text(context.l10n!.clear),
                         onPressed: () => (setState(() {
                               index = 0;
                               Navigator.of(context).pop();
