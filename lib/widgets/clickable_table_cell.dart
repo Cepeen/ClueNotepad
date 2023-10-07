@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ClickableTableCell extends StatefulWidget {
-  ClickableTableCell();
-  final key = GlobalKey();
   @override
   _ClickableTableCellState createState() => _ClickableTableCellState();
 }
@@ -25,23 +23,27 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
                   children: [
                     IconButton(
                         icon: Icon(Icons.check),
-                        onPressed: () => Navigator.of(context).pop(setState(() {
+                        onPressed: () => (setState(() {
                               index = 1;
+                              Navigator.of(context).pop();
                             }))),
                     IconButton(
                         icon: Icon(Icons.close),
-                        onPressed: () => Navigator.of(context).pop(setState(() {
+                        onPressed: () => (setState(() {
                               index = 2;
+                              Navigator.of(context).pop();
                             }))),
                     IconButton(
                         icon: Icon(Icons.help),
-                        onPressed: () => Navigator.of(context).pop(setState(() {
+                        onPressed: () => (setState(() {
                               index = 3;
+                              Navigator.of(context).pop();
                             }))),
                     TextButton(
-                        child: Text(AppLocalizations.of(context).clear),
-                        onPressed: () => Navigator.of(context).pop(setState(() {
+                        child: Text(AppLocalizations.of(context)!.clear),
+                        onPressed: () => (setState(() {
                               index = 0;
+                              Navigator.of(context).pop();
                             })))
                   ],
                 ),
@@ -49,7 +51,7 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
             });
       },
       child: Container(
-        height: 32,
+        height: 30,
         child: Center(
             child: index == 0
                 ? Container()

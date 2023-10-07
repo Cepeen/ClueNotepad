@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 
@@ -14,11 +13,11 @@ class AppContent extends StatefulWidget {
   final int playersInitial;
 
   const AppContent({
-    Key key,
-    @required this.selectedTheme,
-    @required this.selectedVersion,
-    @required this.changeTheme,
-    @required this.playersInitial,
+    Key? key,
+    required this.selectedTheme,
+    required this.selectedVersion,
+    required this.changeTheme,
+    required this.playersInitial,
   }) : super(key: key);
 
   @override
@@ -36,7 +35,7 @@ class _AppContentState extends State<AppContent> {
                       content: Column(mainAxisSize: MainAxisSize.min, children: [
                     SizedBox(height: 16), // Add space above the text
                     Text(
-                      AppLocalizations.of(context).areyousure,
+                      AppLocalizations.of(context)!.areyousure,
                       style: TextStyle(fontSize: 18),
                     ),
                     SizedBox(height: 16), // Add space below the text
@@ -45,9 +44,7 @@ class _AppContentState extends State<AppContent> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).pop(setState(() {
-                              playersInitial = playersInitial;
-                            })); // Close the dialog
+                            // TO DO create table reset function
                           },
                           child: Text(
                             'Yes',
@@ -78,66 +75,81 @@ class _AppContentState extends State<AppContent> {
               context: context,
               builder: (context) => AlertDialog(
                   backgroundColor: Colors.blue[50],
-                  title: FittedBox(child: Text((AppLocalizations.of(context).howMany))),
+                  title: FittedBox(child: Text((AppLocalizations.of(context)!.howMany))),
                   content: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: SizedBox(
+                            padding: const EdgeInsets.all(4.0),
+                            child: SizedBox(
                               width: 40.0,
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('2'),
-                                  onPressed: () => Navigator.of(context).pop(setState(() {
-                                        playersInitial = 2;
-                                      })))),
-                        ),
+                                  onPressed: () {
+                                    setState(() {
+                                      playersInitial = 2; // Update playersInitial here
+                                    });
+                                    Navigator.of(context).pop();
+                                  }),
+                            )),
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: SizedBox(
+                            padding: const EdgeInsets.all(4.0),
+                            child: SizedBox(
                               width: 40.0,
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('3'),
-                                  onPressed: () => Navigator.of(context).pop(setState(() {
-                                        playersInitial = 3;
-                                      })))),
-                        ),
+                                  onPressed: () {
+                                    setState(() {
+                                      playersInitial = 3; // Update playersInitial here
+                                    });
+                                    Navigator.of(context).pop();
+                                  }),
+                            )),
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: SizedBox(
+                            padding: const EdgeInsets.all(4.0),
+                            child: SizedBox(
                               width: 40.0,
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('4'),
-                                  onPressed: () => Navigator.of(context).pop(setState(() {
-                                        playersInitial = 4;
-                                      })))),
-                        ),
+                                  onPressed: () {
+                                    setState(() {
+                                      playersInitial = 4; // Update playersInitial here
+                                    });
+                                    Navigator.of(context).pop();
+                                  }),
+                            )),
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: SizedBox(
+                            padding: const EdgeInsets.all(4.0),
+                            child: SizedBox(
                               width: 40.0,
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('5'),
-                                  onPressed: () => Navigator.of(context).pop(setState(() {
-                                        playersInitial = 5;
-                                      })))),
-                        ),
+                                  onPressed: () {
+                                    setState(() {
+                                      playersInitial = 5; // Update playersInitial here
+                                    });
+                                    Navigator.of(context).pop();
+                                  }),
+                            )),
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: SizedBox(
+                            padding: const EdgeInsets.all(4.0),
+                            child: SizedBox(
                               width: 40.0,
                               height: 40.0,
                               child: ElevatedButton(
                                   child: Text('6'),
-                                  onPressed: () => Navigator.of(context).pop(setState(() {
-                                        playersInitial = 6;
-                                      })))),
-                        ),
+                                  onPressed: () {
+                                    setState(() {
+                                      playersInitial = 6; // Update playersInitial here
+                                    });
+                                    Navigator.of(context).pop();
+                                  }),
+                            )),
                       ])));
         }
         break;
@@ -148,7 +160,7 @@ class _AppContentState extends State<AppContent> {
               builder: (BuildContext context) {
                 return SimpleDialog(
                   backgroundColor: Colors.blue[50],
-                  title: Text(AppLocalizations.of(context).choseEdition),
+                  title: Text(AppLocalizations.of(context)!.choseEdition),
                   children: <Widget>[
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -157,11 +169,12 @@ class _AppContentState extends State<AppContent> {
                             height: 40.0,
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pop(setState(() {
+                                setState(() {
                                   selectedVersion = 1;
-                                }));
+                                  Navigator.of(context).pop((() {}));
+                                });
                               },
-                              child: Text(AppLocalizations.of(context).hasbro),
+                              child: Text(AppLocalizations.of(context)!.hasbro),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -170,11 +183,12 @@ class _AppContentState extends State<AppContent> {
                             height: 40.0,
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pop(setState(() {
+                                setState(() {
                                   selectedVersion = 2;
-                                }));
+                                  Navigator.of(context).pop((() {}));
+                                });
                               },
-                              child: Text(AppLocalizations.of(context).discover),
+                              child: Text(AppLocalizations.of(context)!.discover),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -183,11 +197,12 @@ class _AppContentState extends State<AppContent> {
                             height: 40.0,
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pop(setState(() {
+                                setState(() {
                                   selectedVersion = 3;
-                                }));
+                                  Navigator.of(context).pop((() {}));
+                                });
                               },
-                              child: Text(AppLocalizations.of(context).classic),
+                              child: Text(AppLocalizations.of(context)!.classic),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -196,11 +211,12 @@ class _AppContentState extends State<AppContent> {
                             height: 40.0,
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pop(setState(() {
+                                setState(() {
                                   selectedVersion = 4;
-                                }));
+                                  Navigator.of(context).pop((() {}));
+                                });
                               },
-                              child: Text(AppLocalizations.of(context).theSimpsonsEdition),
+                              child: Text(AppLocalizations.of(context)!.theSimpsonsEdition),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -209,11 +225,12 @@ class _AppContentState extends State<AppContent> {
                             height: 40.0,
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).pop(setState(() {
+                                setState(() {
                                   selectedVersion = 5;
-                                }));
+                                  Navigator.of(context).pop((() {}));
+                                });
                               },
-                              child: Text(AppLocalizations.of(context).harryPotterEdition),
+                              child: Text(AppLocalizations.of(context)!.harryPotterEdition),
                             ))),
                   ],
                 );
@@ -231,10 +248,10 @@ class _AppContentState extends State<AppContent> {
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        (AppLocalizations.of(context).wipetable),
+                        (AppLocalizations.of(context)!.setcolor),
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Colors.red, // You can change the color to match your warning style
+                          color: const Color.fromARGB(255, 0, 0, 0), // You can change the color to match your warning style
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -256,7 +273,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(blueTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context).blue),
+                              child: Text(AppLocalizations.of(context)!.blue),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -273,7 +290,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(redTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context).red),
+                              child: Text(AppLocalizations.of(context)!.red),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -290,7 +307,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(greenTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context).green),
+                              child: Text(AppLocalizations.of(context)!.green),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -307,7 +324,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(yellowTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context).yellow,
+                              child: Text(AppLocalizations.of(context)!.yellow,
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                             ))),
@@ -326,7 +343,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(purpleTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context).purple),
+                              child: Text(AppLocalizations.of(context)!.purple),
                             ))),
                     SimpleDialogOption(
                         padding: const EdgeInsets.all(4.0),
@@ -343,7 +360,7 @@ class _AppContentState extends State<AppContent> {
                                 widget.changeTheme(whiteTheme);
                                 Navigator.of(context).pop();
                               },
-                              child: Text(AppLocalizations.of(context).white,
+                              child: Text(AppLocalizations.of(context)!.white,
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
                             ))),
@@ -365,21 +382,21 @@ class _AppContentState extends State<AppContent> {
 
   @override
   Widget build(BuildContext context) {
-    String versionText = AppLocalizations.of(context).classic;
+    String versionText = AppLocalizations.of(context)!.classic;
     if (selectedVersion == 1) {
-      versionText = AppLocalizations.of(context).hasbro;
+      versionText = AppLocalizations.of(context)!.hasbro;
     }
     if (selectedVersion == 2) {
-      versionText = AppLocalizations.of(context).discover;
+      versionText = AppLocalizations.of(context)!.discover;
     }
     if (selectedVersion == 3) {
-      versionText = AppLocalizations.of(context).classic;
+      versionText = AppLocalizations.of(context)!.classic;
     }
     if (selectedVersion == 4) {
-      versionText = AppLocalizations.of(context).theSimpsonsEdition;
+      versionText = AppLocalizations.of(context)!.theSimpsonsEdition;
     }
     if (selectedVersion == 5) {
-      versionText = AppLocalizations.of(context).harryPotterEdition;
+      versionText = AppLocalizations.of(context)!.harryPotterEdition;
     }
 
     return Scaffold(
@@ -389,15 +406,15 @@ class _AppContentState extends State<AppContent> {
           Text(
             _title,
             style: TextStyle(
-              fontSize: 18.0, // Adjust font size as needed
+              fontSize: 18.0,
             ),
           ),
           GestureDetector(
             child: Text(
               versionText,
               style: TextStyle(
-                fontSize: 10.0, // Adjust font size as needed
-                color: Colors.white, // Assuming you want white color
+                fontSize: 10.0,
+                color: Colors.white,
               ),
             ),
             onTap: () {
@@ -409,11 +426,11 @@ class _AppContentState extends State<AppContent> {
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem(value: 0, child: Text(AppLocalizations.of(context).clearTabbles)),
-              PopupMenuItem(value: 1, child: Text(AppLocalizations.of(context).setPlayers)),
-              PopupMenuItem(value: 2, child: Text(AppLocalizations.of(context).choseEdition)),
-              PopupMenuItem(value: 3, child: Text(AppLocalizations.of(context).setcolor)),
-              PopupMenuItem(value: 4, child: Text(AppLocalizations.of(context).about)),
+              PopupMenuItem(value: 0, child: Text(AppLocalizations.of(context)!.clearTabbles)),
+              PopupMenuItem(value: 1, child: Text(AppLocalizations.of(context)!.setPlayers)),
+              PopupMenuItem(value: 2, child: Text(AppLocalizations.of(context)!.choseEdition)),
+              PopupMenuItem(value: 3, child: Text(AppLocalizations.of(context)!.setcolor)),
+              PopupMenuItem(value: 4, child: Text(AppLocalizations.of(context)!.about)),
             ],
           )
         ],

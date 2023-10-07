@@ -5,13 +5,13 @@ import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 import 'widgets/app_content.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(const ClueNotepad());
+void main() => runApp(ClueNotepad());
 var selectedTheme = blueTheme;
 var selectedVersion = 3;
 var playersInitial = 2; //Default amount of players - creates 3 columns
 
 class ClueNotepad extends StatefulWidget {
-  const ClueNotepad({Key key}) : super(key: key);
+  const ClueNotepad({Key? key}) : super(key: key);
 
   static const String _title = 'Clue Notepad';
 
@@ -46,7 +46,7 @@ class _ClueNotepadState extends State<ClueNotepad> {
         selectedVersion: selectedVersion,
         selectedTheme: selectedTheme,
         changeTheme: changeTheme,
-        playersInitial: playersInitial,
+        playersInitial: playersInitial, 
       ),
       theme: selectedTheme,
     );

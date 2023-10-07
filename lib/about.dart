@@ -11,7 +11,7 @@ class About extends StatefulWidget {
 
 class _AboutState extends State<About> {
   // The package version. CFBundleShortVersionString on iOS, versionName on Android.
-  String _version;
+  late String _version;
 
   @override
   void initState() {
@@ -28,7 +28,7 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final TextStyle textStyle = theme.textTheme.bodyMedium;
+    final TextStyle? textStyle = theme.textTheme.bodyMedium;
     final List<Widget> aboutBoxChildren = <Widget>[
       const SizedBox(height: 24),
       RichText(
@@ -55,7 +55,7 @@ class _AboutState extends State<About> {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: Text((AppLocalizations.of(context).about))),
+      appBar: AppBar(title: Text((AppLocalizations.of(context)!.about))),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
