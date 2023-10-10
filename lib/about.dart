@@ -115,6 +115,13 @@ class _AboutState extends State<About> {
                                     _launchURL();
                                   },
                               ),
+                              TextSpan(
+                                  text: '\n \n LICENSES',
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => LicensePage()));
+                                    })
                             ],
                           ),
                         ),
