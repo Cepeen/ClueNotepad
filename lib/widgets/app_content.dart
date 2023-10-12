@@ -26,6 +26,7 @@ class AppContent extends StatefulWidget {
 class _AppContentState extends State<AppContent> {
   Future<void> onSelected(BuildContext context, int item) async {
     switch (item) {
+      //RESETTING TABLES
       case 0:
         {
           showDialog(
@@ -68,6 +69,7 @@ class _AppContentState extends State<AppContent> {
                   ])));
         }
         break;
+      //SETTING PLAYERS
       case 1:
         {
           showDialog(
@@ -152,6 +154,7 @@ class _AppContentState extends State<AppContent> {
                       ])));
         }
         break;
+      //SETTING VERSION
       case 2:
         {
           showDialog(
@@ -236,6 +239,7 @@ class _AppContentState extends State<AppContent> {
               });
         }
         break;
+      //SETTING COLORS
       case 3:
         {
           showDialog(
@@ -369,6 +373,7 @@ class _AppContentState extends State<AppContent> {
               });
         }
         break;
+      //ABOUT SECTION
       case 4:
         {
           Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
