@@ -1,9 +1,12 @@
+import 'package:clue_notepad/widgets/clickable_table_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
-
-import '../about.dart';
 import '../main.dart';
+import '../about.dart';
 import '../tables.dart';
+import 'package:provider/provider.dart';
+
+
 
 class AppContent extends StatefulWidget {
   final ThemeData selectedTheme;
@@ -17,6 +20,7 @@ class AppContent extends StatefulWidget {
     required this.selectedVersion,
     required this.changeTheme,
     required this.playersInitial,
+    required void Function(int version) changeVersion,
   }) : super(key: key);
 
   @override
@@ -44,7 +48,12 @@ class _AppContentState extends State<AppContent> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
+<<<<<<< HEAD
                             // TO DO create table reset function
+=======
+                            Provider.of<TableRowProvider>(context, listen: false).setIndex(0);
+                            Navigator.of(context).pop();
+>>>>>>> a628c51 (array names)
                           },
                           child: Text(
                             'Yes',
@@ -90,7 +99,8 @@ class _AppContentState extends State<AppContent> {
                                   child: Text('2'),
                                   onPressed: () {
                                     setState(() {
-                                      playersInitial = 2; // Update playersInitial here
+                                      Provider.of<AppStateProvider>(context, listen: false)
+                                          .setPlayersInitial(2); // Update playersInitial here
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -104,7 +114,8 @@ class _AppContentState extends State<AppContent> {
                                   child: Text('3'),
                                   onPressed: () {
                                     setState(() {
-                                      playersInitial = 3; // Update playersInitial here
+                                      Provider.of<AppStateProvider>(context, listen: false)
+                                          .setPlayersInitial(3); // Update playersInitial here
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -118,7 +129,8 @@ class _AppContentState extends State<AppContent> {
                                   child: Text('4'),
                                   onPressed: () {
                                     setState(() {
-                                      playersInitial = 4; // Update playersInitial here
+                                      Provider.of<AppStateProvider>(context, listen: false)
+                                          .setPlayersInitial(4); // Update playersInitial here
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -132,7 +144,8 @@ class _AppContentState extends State<AppContent> {
                                   child: Text('5'),
                                   onPressed: () {
                                     setState(() {
-                                      playersInitial = 5; // Update playersInitial here
+                                      Provider.of<AppStateProvider>(context, listen: false)
+                                          .setPlayersInitial(5); // Update playersInitial here
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -146,7 +159,8 @@ class _AppContentState extends State<AppContent> {
                                   child: Text('6'),
                                   onPressed: () {
                                     setState(() {
-                                      playersInitial = 6; // Update playersInitial here
+                                      Provider.of<AppStateProvider>(context, listen: false)
+                                          .setPlayersInitial(6); // Update playersInitial here
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -172,7 +186,8 @@ class _AppContentState extends State<AppContent> {
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  selectedVersion = 1;
+                                  Provider.of<AppStateProvider>(context, listen: false)
+                                      .changeVersion(1);
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
@@ -186,7 +201,8 @@ class _AppContentState extends State<AppContent> {
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  selectedVersion = 2;
+                                  Provider.of<AppStateProvider>(context, listen: false)
+                                      .changeVersion(2);
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
@@ -200,7 +216,8 @@ class _AppContentState extends State<AppContent> {
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  selectedVersion = 3;
+                                  Provider.of<AppStateProvider>(context, listen: false)
+                                      .changeVersion(3);
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
@@ -214,7 +231,8 @@ class _AppContentState extends State<AppContent> {
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  selectedVersion = 4;
+                                  Provider.of<AppStateProvider>(context, listen: false)
+                                      .changeVersion(4);
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
@@ -228,7 +246,8 @@ class _AppContentState extends State<AppContent> {
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  selectedVersion = 5;
+                                  Provider.of<AppStateProvider>(context, listen: false)
+                                      .changeVersion(5);
                                   Navigator.of(context).pop((() {}));
                                 });
                               },
@@ -388,19 +407,19 @@ class _AppContentState extends State<AppContent> {
   @override
   Widget build(BuildContext context) {
     String versionText = context.l10n!.classic;
-    if (selectedVersion == 1) {
+    if (Provider.of<AppStateProvider>(context).selectedVersion == 1) {
       versionText = context.l10n!.hasbro;
     }
-    if (selectedVersion == 2) {
+    if (Provider.of<AppStateProvider>(context).selectedVersion == 2) {
       versionText = context.l10n!.discover;
     }
-    if (selectedVersion == 3) {
+      if (Provider.of<AppStateProvider>(context).selectedVersion == 3) {
       versionText = context.l10n!.classic;
     }
-    if (selectedVersion == 4) {
+     if (Provider.of<AppStateProvider>(context).selectedVersion == 4) {
       versionText = context.l10n!.theSimpsonsEdition;
     }
-    if (selectedVersion == 5) {
+    if (Provider.of<AppStateProvider>(context).selectedVersion == 5) {
       versionText = context.l10n!.harryPotterEdition;
     }
 
@@ -440,7 +459,7 @@ class _AppContentState extends State<AppContent> {
           )
         ],
       ),
-      body: Notepad('Clue Notepad', playersInitial),
+      body: Notepad('Clue Notepad', Provider.of<AppStateProvider>(context).playersInitial),
     );
   }
 }

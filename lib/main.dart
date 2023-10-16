@@ -1,14 +1,55 @@
+<<<<<<< HEAD
+=======
+
+import 'package:clue_notepad/widgets/clickable_table_cell.dart';
+>>>>>>> a628c51 (array names)
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
+import 'package:provider/provider.dart';
 import 'widgets/app_content.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(ClueNotepad());
-var selectedTheme = blueTheme;
-var selectedVersion = 3;
-var playersInitial = 2; //Default amount of players - creates 3 columns
+class AppStateProvider extends ChangeNotifier {
+  ThemeData _selectedTheme = blueTheme;
+  int _selectedVersion = 3;
+  int _playersInitial = 2;
+
+  ThemeData get selectedTheme => _selectedTheme;
+  int get selectedVersion => _selectedVersion;
+  int get playersInitial => _playersInitial;
+
+  void changeTheme(ThemeData theme) {
+    _selectedTheme = theme;
+    notifyListeners();
+  }
+
+  void changeVersion(int i) {
+    _selectedVersion = i;
+    notifyListeners();
+  }
+
+  void setPlayersInitial(int i) {
+    _playersInitial = i;
+    notifyListeners();
+  }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a628c51 (array names)
+}
+
+void main() => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => AppStateProvider()),
+          ChangeNotifierProvider(create: (_) => TableRowProvider()), // Add this line
+        ],
+        child: ClueNotepad(),
+      ),
+    );
 
 class ClueNotepad extends StatefulWidget {
   const ClueNotepad({Key? key}) : super(key: key);
@@ -21,9 +62,11 @@ class ClueNotepad extends StatefulWidget {
 
 class _ClueNotepadState extends State<ClueNotepad> {
   void changeTheme(ThemeData theme) {
-    setState(() {
-      selectedTheme = theme;
-    });
+    Provider.of<AppStateProvider>(context, listen: false).changeTheme(theme);
+  }
+
+  void changeVersion(int version) {
+    Provider.of<AppStateProvider>(context, listen: false).changeVersion(version);
   }
 
   @override
@@ -43,12 +86,15 @@ class _ClueNotepadState extends State<ClueNotepad> {
       ],
       title: ClueNotepad._title,
       home: AppContent(
-        selectedVersion: selectedVersion,
-        selectedTheme: selectedTheme,
+        selectedVersion: Provider.of<AppStateProvider>(context, listen: false).selectedVersion,
+        selectedTheme: Provider.of<AppStateProvider>(context, listen: false).selectedTheme,
+        playersInitial: Provider.of<AppStateProvider>(context, listen: false).playersInitial,
         changeTheme: changeTheme,
-        playersInitial: playersInitial, 
+        changeVersion: changeVersion,
       ),
-      theme: selectedTheme,
+      theme: Provider.of<AppStateProvider>(context).selectedTheme,
     );
   }
 }
+
+

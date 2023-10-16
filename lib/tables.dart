@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
+import 'package:provider/provider.dart';
 
 import 'main.dart';
 import 'widgets/clickable_table_cell.dart';
@@ -197,46 +198,46 @@ class _NotepadState extends State<Notepad> {
                     color: Colors.white),
               ],
             ),
-            if (selectedVersion == 1) ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
+            if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 1) ...[
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArray) createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
               for (var text in czymArray) createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArray) createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (selectedVersion == 2) ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
+            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 2) ...[
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArray2) createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
               for (var text in czymArray2) createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArray2) createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (selectedVersion == 4) ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
+            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 4) ...[
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArraySimpsons)
                 createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
               for (var text in czymArraySimpsons)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArraySimpsons)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (selectedVersion == 5) ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
+            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 5) ...[
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArrayHarryPotter)
                 createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
               for (var text in czymArrayHarryPotter)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArrayHarryPotter)
                 createClickableTableRow(text!, widget.numberOfPlayers),
             ] else ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArray3) createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
               for (var text in czymArray3) createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers),
+              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArray3) createClickableTableRow(text!, widget.numberOfPlayers),
             ]
           ]),
@@ -268,8 +269,9 @@ TableRow createClickableTableRow(String text, int playersAmount) {
   );
 }
 
-Color getColorPrimary() {
-  if (selectedTheme == blueTheme) {
+Color getColorPrimary(BuildContext context) {
+  final selectedTheme = Provider.of<AppStateProvider>(context).selectedTheme;
+  if (Provider.of<AppStateProvider>(context).selectedTheme == blueTheme) {
     return Colors.blue;
   } else if (selectedTheme == redTheme) {
     return Colors.red;
@@ -286,7 +288,8 @@ Color getColorPrimary() {
   }
 }
 
-Color? getColorSecondary() {
+Color? getColorSecondary(BuildContext context) {
+  final selectedTheme = Provider.of<AppStateProvider>(context).selectedTheme;
   if (selectedTheme == blueTheme) {
     return Colors.blue[300];
   } else if (selectedTheme == redTheme) {
@@ -304,19 +307,22 @@ Color? getColorSecondary() {
   }
 }
 
-TableRow createSectionTableRow(String text, int playersAmount) {
+TableRow createSectionTableRow(String text, int playersAmount, BuildContext context) {
   return TableRow(
-    decoration: const BoxDecoration(
+    decoration: BoxDecoration(
       color: Colors.white,
     ),
     children: <Widget>[
       Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.all(2.0),
-          child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
-          height: 32,
-          color: getColorPrimary()),
-      for (int i = 0; i <= playersAmount; i++) Container(height: 32, color: getColorSecondary()),
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(2.0),
+        child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
+        height: 32,
+        color: getColorPrimary(context), // Use getColorPrimary with context
+      ),
+      for (int i = 0; i <= playersAmount; i++)
+        Container(
+            height: 32, color: getColorSecondary(context)), // Use getColorSecondary with context
     ],
   );
 }
