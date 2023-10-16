@@ -24,8 +24,8 @@ class _NotepadState extends State<Notepad> {
   @override
   Widget build(BuildContext context) {
 //hasbro
-    var ktoArray = ['Green', 'Mustard', 'Orchid', 'Peacock', 'Plum', 'Scarlett'];
-    var czymArray = [
+    var ktoArrayHasbro = ['Green', 'Mustard', 'Orchid', 'Peacock', 'Plum', 'Scarlett'];
+    var czymArrayHasbro = [
       context.l10n?.candlestick,
       context.l10n?.dagger,
       context.l10n?.leadPipe,
@@ -33,7 +33,7 @@ class _NotepadState extends State<Notepad> {
       context.l10n?.rope,
       context.l10n?.wrench
     ];
-    var gdzieArray = [
+    var gdzieArrayHasbro = [
       context.l10n?.lounge,
       context.l10n?.billiardRoom,
       context.l10n?.conservatory,
@@ -46,8 +46,8 @@ class _NotepadState extends State<Notepad> {
     ];
 
 //discover the secret
-    var ktoArray2 = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
-    var czymArray2 = [
+    var ktoArrayDiscover = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
+    var czymArrayDiscover = [
       context.l10n?.candlestick,
       context.l10n?.axe,
       context.l10n?.poison,
@@ -58,7 +58,7 @@ class _NotepadState extends State<Notepad> {
       context.l10n?.rope,
       context.l10n?.dumbbell
     ];
-    var gdzieArray2 = [
+    var gdzieArrayDiscover = [
       context.l10n?.guestHouse,
       context.l10n?.theatre,
       context.l10n?.spa,
@@ -71,8 +71,8 @@ class _NotepadState extends State<Notepad> {
     ];
 
 //classic
-    var ktoArray3 = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
-    var czymArray3 = [
+    var ktoArrayClassic = ['Green', 'Mustard', 'White', 'Peacock', 'Plum', 'Scarlett'];
+    var czymArrayClassic = [
       context.l10n?.candlestick,
       context.l10n?.dagger,
       context.l10n?.leadPipe,
@@ -80,7 +80,7 @@ class _NotepadState extends State<Notepad> {
       context.l10n?.rope,
       context.l10n?.wrench
     ];
-    var gdzieArray3 = [
+    var gdzieArrayClassic = [
       context.l10n?.lounge,
       context.l10n?.cellar,
       context.l10n?.billiardRoom,
@@ -93,7 +93,7 @@ class _NotepadState extends State<Notepad> {
       context.l10n?.study
     ];
 
-//simpsons
+//Simpsons
     var ktoArraySimpsons = ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie', 'Ned Flanders'];
     var czymArraySimpsons = [
       context.l10n?.donut,
@@ -114,7 +114,7 @@ class _NotepadState extends State<Notepad> {
       context.l10n?.flandersHouse,
       context.l10n?.krustyland
     ];
-
+//Harry Potter
     var ktoArrayHarryPotter = [
       'Harry Potter',
       'Hermione Granger',
@@ -200,19 +200,27 @@ class _NotepadState extends State<Notepad> {
             ),
             if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 1) ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
-              for (var text in ktoArray) createClickableTableRow(text, widget.numberOfPlayers),
+              for (var text in ktoArrayHasbro)
+                createClickableTableRow(text, widget.numberOfPlayers),
               createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
-              for (var text in czymArray) createClickableTableRow(text!, widget.numberOfPlayers),
+              for (var text in czymArrayHasbro)
+                createClickableTableRow(text!, widget.numberOfPlayers),
               createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
-              for (var text in gdzieArray) createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 2) ...[
+              for (var text in gdzieArrayHasbro)
+                createClickableTableRow(text!, widget.numberOfPlayers),
+            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion ==
+                2) ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
-              for (var text in ktoArray2) createClickableTableRow(text, widget.numberOfPlayers),
+              for (var text in ktoArrayDiscover)
+                createClickableTableRow(text, widget.numberOfPlayers),
               createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
-              for (var text in czymArray2) createClickableTableRow(text!, widget.numberOfPlayers),
+              for (var text in czymArrayDiscover)
+                createClickableTableRow(text!, widget.numberOfPlayers),
               createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
-              for (var text in gdzieArray2) createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 4) ...[
+              for (var text in gdzieArrayDiscover)
+                createClickableTableRow(text!, widget.numberOfPlayers),
+            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion ==
+                4) ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArraySimpsons)
                 createClickableTableRow(text, widget.numberOfPlayers),
@@ -222,7 +230,8 @@ class _NotepadState extends State<Notepad> {
               createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArraySimpsons)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 5) ...[
+            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion ==
+                5) ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArrayHarryPotter)
                 createClickableTableRow(text, widget.numberOfPlayers),
@@ -234,11 +243,14 @@ class _NotepadState extends State<Notepad> {
                 createClickableTableRow(text!, widget.numberOfPlayers),
             ] else ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
-              for (var text in ktoArray3) createClickableTableRow(text, widget.numberOfPlayers),
+              for (var text in ktoArrayClassic)
+                createClickableTableRow(text, widget.numberOfPlayers),
               createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
-              for (var text in czymArray3) createClickableTableRow(text!, widget.numberOfPlayers),
+              for (var text in czymArrayClassic)
+                createClickableTableRow(text!, widget.numberOfPlayers),
               createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
-              for (var text in gdzieArray3) createClickableTableRow(text!, widget.numberOfPlayers),
+              for (var text in gdzieArrayClassic)
+                createClickableTableRow(text!, widget.numberOfPlayers),
             ]
           ]),
     );

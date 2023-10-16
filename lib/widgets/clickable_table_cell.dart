@@ -1,6 +1,5 @@
 import 'package:clue_notepad/tables.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class TableRowProvider extends ChangeNotifier {
   int _index = 0;
@@ -19,13 +18,16 @@ class ClickableTableCell extends StatefulWidget {
 }
 
 class _ClickableTableCellState extends State<ClickableTableCell> {
+  int _index = 0;
+
   void _resetIndex(int newIndex) {
-    Provider.of<TableRowProvider>(context, listen: false).setIndex(newIndex);
+    setState(() {
+      _index = newIndex;
+    });
   }
 
+  @override
   Widget build(BuildContext context) {
-    int index = Provider.of<TableRowProvider>(context).index;
-
     return TableRowInkWell(
       onTap: () {
         showDialog(
@@ -40,33 +42,29 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
                     IconButton(
                       icon: Icon(Icons.check),
                       onPressed: () {
-                        setState(() {
-                          Navigator.of(context).pop();
-                        });
+                        _resetIndex(1);
+                        Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
                       icon: Icon(Icons.close),
                       onPressed: () {
-                        setState(() {
-                          Navigator.of(context).pop();
-                        });
+                        _resetIndex(2);
+                        Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
                       icon: Icon(Icons.help),
                       onPressed: () {
-                        setState(() {
-                          Navigator.of(context).pop();
-                        });
+                        _resetIndex(3);
+                        Navigator.of(context).pop();
                       },
                     ),
                     TextButton(
                       child: Text(context.l10n!.clear),
                       onPressed: () {
-                        setState(() {
-                          Navigator.of(context).pop();
-                        });
+                        _resetIndex(0);
+                        Navigator.of(context).pop();
                       },
                     )
                   ],
@@ -79,13 +77,13 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
       child: Container(
         height: 30,
         child: Center(
-          child: index == 0
+          child: _index == 0
               ? Container()
-              : index == 1
+              : _index == 1
                   ? Icon(Icons.check)
-                  : index == 2
+                  : _index == 2
                       ? Icon(Icons.close)
-                      : index == 3
+                      : _index == 3
                           ? Icon(Icons.help)
                           : Container(),
         ),
@@ -93,4 +91,3 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
     );
   }
 }
-

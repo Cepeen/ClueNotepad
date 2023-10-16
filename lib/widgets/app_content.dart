@@ -6,8 +6,6 @@ import '../about.dart';
 import '../tables.dart';
 import 'package:provider/provider.dart';
 
-
-
 class AppContent extends StatefulWidget {
   final ThemeData selectedTheme;
   final int selectedVersion;
@@ -48,12 +46,8 @@ class _AppContentState extends State<AppContent> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-<<<<<<< HEAD
-                            // TO DO create table reset function
-=======
                             Provider.of<TableRowProvider>(context, listen: false).setIndex(0);
                             Navigator.of(context).pop();
->>>>>>> a628c51 (array names)
                           },
                           child: Text(
                             'Yes',
@@ -413,10 +407,10 @@ class _AppContentState extends State<AppContent> {
     if (Provider.of<AppStateProvider>(context).selectedVersion == 2) {
       versionText = context.l10n!.discover;
     }
-      if (Provider.of<AppStateProvider>(context).selectedVersion == 3) {
+    if (Provider.of<AppStateProvider>(context).selectedVersion == 3) {
       versionText = context.l10n!.classic;
     }
-     if (Provider.of<AppStateProvider>(context).selectedVersion == 4) {
+    if (Provider.of<AppStateProvider>(context).selectedVersion == 4) {
       versionText = context.l10n!.theSimpsonsEdition;
     }
     if (Provider.of<AppStateProvider>(context).selectedVersion == 5) {

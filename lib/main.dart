@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
-
 import 'package:clue_notepad/widgets/clickable_table_cell.dart';
->>>>>>> a628c51 (array names)
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -12,6 +8,9 @@ import 'widgets/app_content.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
 class AppStateProvider extends ChangeNotifier {
+  TableRowProvider _tableRowProvider = TableRowProvider(); // Create an instance
+
+  TableRowProvider get tableRowProvider => _tableRowProvider;
   ThemeData _selectedTheme = blueTheme;
   int _selectedVersion = 3;
   int _playersInitial = 2;
@@ -34,11 +33,8 @@ class AppStateProvider extends ChangeNotifier {
     _playersInitial = i;
     notifyListeners();
   }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> a628c51 (array names)
 }
 
 void main() => runApp(
