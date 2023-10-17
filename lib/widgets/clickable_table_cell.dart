@@ -20,7 +20,7 @@ class ClickableTableCell extends StatefulWidget {
 class _ClickableTableCellState extends State<ClickableTableCell> {
   int _index = 0;
 
-  void _resetIndex(int newIndex) {
+  void _setIndex(int newIndex) {
     setState(() {
       _index = newIndex;
     });
@@ -42,28 +42,28 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
                     IconButton(
                       icon: Icon(Icons.check),
                       onPressed: () {
-                        _resetIndex(1);
+                        _setIndex(1);
                         Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
                       icon: Icon(Icons.close),
                       onPressed: () {
-                        _resetIndex(2);
+                        _setIndex(2);
                         Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
                       icon: Icon(Icons.help),
                       onPressed: () {
-                        _resetIndex(3);
+                        _setIndex(3);
                         Navigator.of(context).pop();
                       },
                     ),
                     TextButton(
                       child: Text(context.l10n!.clear),
                       onPressed: () {
-                        _resetIndex(0);
+                        _setIndex(0);
                         Navigator.of(context).pop();
                       },
                     )
