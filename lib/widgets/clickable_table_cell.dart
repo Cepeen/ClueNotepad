@@ -1,16 +1,4 @@
-import 'package:clue_notepad/tables.dart';
 import 'package:flutter/material.dart';
-
-class TableRowProvider extends ChangeNotifier {
-  int _index = 0;
-
-  int get index => _index;
-
-  void setIndex(int newIndex) {
-    _index = newIndex;
-    notifyListeners();
-  }
-}
 
 class ClickableTableCell extends StatefulWidget {
   @override
@@ -18,16 +6,26 @@ class ClickableTableCell extends StatefulWidget {
 }
 
 class _ClickableTableCellState extends State<ClickableTableCell> {
-  int _index = 0;
-
-  void _setIndex(int newIndex) {
-    setState(() {
-      _index = newIndex;
-    });
-  }
+  String _iconType = '';
 
   @override
   Widget build(BuildContext context) {
+    IconData? iconData;
+
+    // Switch case to determine the appropriate icon based on _iconType
+    switch (_iconType) {
+      case 'check':
+        iconData = Icons.check;
+        break;
+      case 'close':
+        iconData = Icons.close;
+        break;
+      case 'help':
+        iconData = Icons.help;
+        break;
+      default:
+        iconData = null; // Set a default value or leave it null if no icon should be shown
+    }
     return TableRowInkWell(
       onTap: () {
         showDialog(
@@ -42,28 +40,36 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
                     IconButton(
                       icon: Icon(Icons.check),
                       onPressed: () {
-                        _setIndex(1);
+                        setState(() {
+                          _iconType = 'check';
+                        });
                         Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
                       icon: Icon(Icons.close),
                       onPressed: () {
-                        _setIndex(2);
+                        setState(() {
+                          _iconType = 'close';
+                        });
                         Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
                       icon: Icon(Icons.help),
                       onPressed: () {
-                        _setIndex(3);
+                        setState(() {
+                          _iconType = 'help';
+                        });
                         Navigator.of(context).pop();
                       },
                     ),
                     TextButton(
-                      child: Text(context.l10n!.clear),
+                      child: Text('Clear'),
                       onPressed: () {
-                        _setIndex(0);
+                        setState(() {
+                          _iconType = '';
+                        });
                         Navigator.of(context).pop();
                       },
                     )
@@ -77,15 +83,7 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
       child: Container(
         height: 30,
         child: Center(
-          child: _index == 0
-              ? Container()
-              : _index == 1
-                  ? Icon(Icons.check)
-                  : _index == 2
-                      ? Icon(Icons.close)
-                      : _index == 3
-                          ? Icon(Icons.help)
-                          : Container(),
+          child: iconData != null ? Icon(iconData) : Container(),
         ),
       ),
     );

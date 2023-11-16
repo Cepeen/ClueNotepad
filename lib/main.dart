@@ -8,9 +8,7 @@ import 'widgets/app_content.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
 class AppStateProvider extends ChangeNotifier {
-  TableRowProvider _tableRowProvider = TableRowProvider(); // Create an instance
 
-  TableRowProvider get tableRowProvider => _tableRowProvider;
   ThemeData _selectedTheme = blueTheme;
   int _selectedVersion = 3;
   int _playersInitial = 2;
@@ -41,7 +39,7 @@ void main() => runApp(
       MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => AppStateProvider()),
-          ChangeNotifierProvider(create: (_) => TableRowProvider()), // Add this line
+
         ],
         child: ClueNotepad(),
       ),

@@ -46,7 +46,7 @@ class _AppContentState extends State<AppContent> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            Provider.of<TableRowProvider>(context, listen: false).setIndex(0);
+  
                             Navigator.of(context).pop();
                           },
                           child: Text(
