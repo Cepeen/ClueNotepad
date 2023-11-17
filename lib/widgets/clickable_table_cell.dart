@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ClickableTableCell extends StatefulWidget {
-  @override
-  _ClickableTableCellState createState() => _ClickableTableCellState();
-}
+class ClickableTableCell extends StatelessWidget {
+  final ValueNotifier<String> _iconType = ValueNotifier<String>('');
 
-class _ClickableTableCellState extends State<ClickableTableCell> {
-  String _iconType = '';
+  void resetIcons() {
+    _iconType.value = '';
+  }
 
   @override
   Widget build(BuildContext context) {
     IconData? iconData;
 
-    // Switch case to determine the appropriate icon based on _iconType
-    switch (_iconType) {
+    switch (_iconType.value) {
       case 'check':
         iconData = Icons.check;
         break;
@@ -24,7 +22,7 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
         iconData = Icons.help;
         break;
       default:
-        iconData = null; // Set a default value or leave it null if no icon should be shown
+        iconData = null;
     }
     return TableRowInkWell(
       onTap: () {
@@ -40,36 +38,28 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
                     IconButton(
                       icon: Icon(Icons.check),
                       onPressed: () {
-                        setState(() {
-                          _iconType = 'check';
-                        });
+                        _iconType.value = 'check';
                         Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
                       icon: Icon(Icons.close),
                       onPressed: () {
-                        setState(() {
-                          _iconType = 'close';
-                        });
+                        _iconType.value = 'close';
                         Navigator.of(context).pop();
                       },
                     ),
                     IconButton(
                       icon: Icon(Icons.help),
                       onPressed: () {
-                        setState(() {
-                          _iconType = 'help';
-                        });
+                        _iconType.value = 'help';
                         Navigator.of(context).pop();
                       },
                     ),
                     TextButton(
                       child: Text('Clear'),
                       onPressed: () {
-                        setState(() {
-                          _iconType = '';
-                        });
+                        _iconType.value = '';
                         Navigator.of(context).pop();
                       },
                     )
@@ -80,11 +70,29 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
           },
         );
       },
-      child: Container(
-        height: 30,
-        child: Center(
-          child: iconData != null ? Icon(iconData) : Container(),
-        ),
+      child: ValueListenableBuilder<String>(
+        valueListenable: _iconType,
+        builder: (context, value, child) {
+          switch (value) {
+            case 'check':
+              iconData = Icons.check;
+              break;
+            case 'close':
+              iconData = Icons.close;
+              break;
+            case 'help':
+              iconData = Icons.help;
+              break;
+            default:
+              iconData = null;
+          }
+          return Container(
+            height: 30,
+            child: Center(
+              child: iconData != null ? Icon(iconData) : Container(),
+            ),
+          );
+        },
       ),
     );
   }

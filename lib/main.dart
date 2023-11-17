@@ -1,4 +1,3 @@
-import 'package:clue_notepad/widgets/clickable_table_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,7 +7,6 @@ import 'widgets/app_content.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
 class AppStateProvider extends ChangeNotifier {
-
   ThemeData _selectedTheme = blueTheme;
   int _selectedVersion = 3;
   int _playersInitial = 2;
@@ -16,6 +14,14 @@ class AppStateProvider extends ChangeNotifier {
   ThemeData get selectedTheme => _selectedTheme;
   int get selectedVersion => _selectedVersion;
   int get playersInitial => _playersInitial;
+  List<ValueNotifier<String>> iconTypes = List.generate(1, (_) => ValueNotifier(''));
+
+  void resetAllIcons() {
+    for (var notifier in iconTypes) {
+      notifier.value = '';
+    }
+    notifyListeners();
+  }
 
   void changeTheme(ThemeData theme) {
     _selectedTheme = theme;
@@ -32,15 +38,17 @@ class AppStateProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
+  void dispose() {
+    for (var notifier in iconTypes) {
+      notifier.dispose();
+    }
+    super.dispose();
+  }
 }
 
 void main() => runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => AppStateProvider()),
-
-        ],
+      ChangeNotifierProvider(
+        create: (_) => AppStateProvider(),
         child: ClueNotepad(),
       ),
     );
@@ -90,5 +98,3 @@ class _ClueNotepadState extends State<ClueNotepad> {
     );
   }
 }
-
-

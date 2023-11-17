@@ -46,7 +46,7 @@ class _AppContentState extends State<AppContent> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-  
+                            Provider.of<AppStateProvider>(context, listen: false).resetAllIcons();
                             Navigator.of(context).pop();
                           },
                           child: Text(
@@ -94,7 +94,7 @@ class _AppContentState extends State<AppContent> {
                                   onPressed: () {
                                     setState(() {
                                       Provider.of<AppStateProvider>(context, listen: false)
-                                          .setPlayersInitial(2); // Update playersInitial here
+                                          .setPlayersInitial(2);
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -109,7 +109,7 @@ class _AppContentState extends State<AppContent> {
                                   onPressed: () {
                                     setState(() {
                                       Provider.of<AppStateProvider>(context, listen: false)
-                                          .setPlayersInitial(3); // Update playersInitial here
+                                          .setPlayersInitial(3); //
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -124,7 +124,7 @@ class _AppContentState extends State<AppContent> {
                                   onPressed: () {
                                     setState(() {
                                       Provider.of<AppStateProvider>(context, listen: false)
-                                          .setPlayersInitial(4); // Update playersInitial here
+                                          .setPlayersInitial(4);
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -139,7 +139,7 @@ class _AppContentState extends State<AppContent> {
                                   onPressed: () {
                                     setState(() {
                                       Provider.of<AppStateProvider>(context, listen: false)
-                                          .setPlayersInitial(5); // Update playersInitial here
+                                          .setPlayersInitial(5);
                                     });
                                     Navigator.of(context).pop();
                                   }),
@@ -154,7 +154,7 @@ class _AppContentState extends State<AppContent> {
                                   onPressed: () {
                                     setState(() {
                                       Provider.of<AppStateProvider>(context, listen: false)
-                                          .setPlayersInitial(6); // Update playersInitial here
+                                          .setPlayersInitial(6);
                                     });
                                     Navigator.of(context).pop();
                                   }),
