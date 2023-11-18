@@ -1,9 +1,7 @@
-import 'package:clue_notepad/widgets/clickable_table_cell.dart';
-import 'package:flutter/material.dart';
+import 'package:clue_notepad/imports.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 import '../main.dart';
 import '../about.dart';
-import '../tables.dart';
 import 'package:provider/provider.dart';
 
 class AppContent extends StatefulWidget {
@@ -453,7 +451,12 @@ class _AppContentState extends State<AppContent> {
           )
         ],
       ),
-      body: Notepad('Clue Notepad', Provider.of<AppStateProvider>(context).playersInitial),
+      body: Notepad(
+  Provider.of<AppStateProvider>(context).playersInitial,
+  ktoArray: [],
+  czymArray: [],
+  gdzieArray: [],
+),
     );
   }
 }
