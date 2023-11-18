@@ -1,4 +1,3 @@
-import 'package:clue_notepad/widgets/clickable_table_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 import '../main.dart';
