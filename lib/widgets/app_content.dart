@@ -399,21 +399,25 @@ class _AppContentState extends State<AppContent> {
 
   @override
   Widget build(BuildContext context) {
-    String versionText = context.l10n!.classic;
-    if (Provider.of<AppStateProvider>(context).selectedVersion == 1) {
-      versionText = context.l10n!.hasbro;
-    }
-    if (Provider.of<AppStateProvider>(context).selectedVersion == 2) {
-      versionText = context.l10n!.discover;
-    }
-    if (Provider.of<AppStateProvider>(context).selectedVersion == 3) {
-      versionText = context.l10n!.classic;
-    }
-    if (Provider.of<AppStateProvider>(context).selectedVersion == 4) {
-      versionText = context.l10n!.theSimpsonsEdition;
-    }
-    if (Provider.of<AppStateProvider>(context).selectedVersion == 5) {
-      versionText = context.l10n!.harryPotterEdition;
+    String versionText;
+    switch (Provider.of<AppStateProvider>(context).selectedVersion) {
+      case 1:
+        versionText = context.l10n!.hasbro;
+        break;
+      case 2:
+        versionText = context.l10n!.discover;
+        break;
+      case 3:
+        versionText = context.l10n!.classic;
+        break;
+      case 4:
+        versionText = context.l10n!.theSimpsonsEdition;
+        break;
+      case 5:
+        versionText = context.l10n!.harryPotterEdition;
+        break;
+      default:
+        versionText = context.l10n!.classic;
     }
 
     return Scaffold(
