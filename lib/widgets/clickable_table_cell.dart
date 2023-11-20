@@ -10,20 +10,6 @@ class ClickableTableCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     IconData? iconData;
-
-    switch (_iconType.value) {
-      case 'check':
-        iconData = Icons.check;
-        break;
-      case 'close':
-        iconData = Icons.close;
-        break;
-      case 'help':
-        iconData = Icons.help;
-        break;
-      default:
-        iconData = null;
-    }
     return TableRowInkWell(
       onTap: () {
         showDialog(
