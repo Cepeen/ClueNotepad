@@ -1,10 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:clue_notepad/models/app_settings.dart';
+import 'package:clue_notepad/ui/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
-import 'main.dart';
 import 'widgets/clickable_table_cell.dart';
 
 extension AppLocalizationsX on BuildContext {
@@ -198,7 +199,7 @@ class _NotepadState extends State<Notepad> {
                     color: Colors.white),
               ],
             ),
-            if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion == 1) ...[
+            if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 1) ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArrayHasbro)
                 createClickableTableRow(text, widget.numberOfPlayers),
@@ -208,8 +209,7 @@ class _NotepadState extends State<Notepad> {
               createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArrayHasbro)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion ==
-                2) ...[
+            ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 2) ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArrayDiscover)
                 createClickableTableRow(text, widget.numberOfPlayers),
@@ -219,8 +219,7 @@ class _NotepadState extends State<Notepad> {
               createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArrayDiscover)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion ==
-                4) ...[
+            ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 4) ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArraySimpsons)
                 createClickableTableRow(text, widget.numberOfPlayers),
@@ -230,8 +229,7 @@ class _NotepadState extends State<Notepad> {
               createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
               for (var text in gdzieArraySimpsons)
                 createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppStateProvider>(context, listen: false).selectedVersion ==
-                5) ...[
+            ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 5) ...[
               createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
               for (var text in ktoArrayHarryPotter)
                 createClickableTableRow(text, widget.numberOfPlayers),
@@ -281,44 +279,6 @@ TableRow createClickableTableRow(String text, int playersAmount) {
   );
 }
 
-Color getColorPrimary(BuildContext context) {
-  final selectedTheme = Provider.of<AppStateProvider>(context).selectedTheme;
-  if (Provider.of<AppStateProvider>(context).selectedTheme == blueTheme) {
-    return Colors.blue;
-  } else if (selectedTheme == redTheme) {
-    return Colors.red;
-  } else if (selectedTheme == greenTheme) {
-    return Colors.green;
-  } else if (selectedTheme == yellowTheme) {
-    return Colors.yellow;
-  } else if (selectedTheme == purpleTheme) {
-    return Colors.purple;
-  } else if (selectedTheme == whiteTheme) {
-    return Color.fromARGB(179, 182, 182, 182);
-  } else {
-    return Colors.blue;
-  }
-}
-
-Color? getColorSecondary(BuildContext context) {
-  final selectedTheme = Provider.of<AppStateProvider>(context).selectedTheme;
-  if (selectedTheme == blueTheme) {
-    return Colors.blue[300];
-  } else if (selectedTheme == redTheme) {
-    return Colors.red[300];
-  } else if (selectedTheme == greenTheme) {
-    return Colors.green[300];
-  } else if (selectedTheme == yellowTheme) {
-    return Colors.yellow[300];
-  } else if (selectedTheme == purpleTheme) {
-    return Colors.purple[300];
-  } else if (selectedTheme == whiteTheme) {
-    return Color.fromARGB(179, 226, 226, 226);
-  } else {
-    return Colors.blue[300];
-  }
-}
-
 TableRow createSectionTableRow(String text, int playersAmount, BuildContext context) {
   return TableRow(
     decoration: BoxDecoration(
@@ -330,11 +290,11 @@ TableRow createSectionTableRow(String text, int playersAmount, BuildContext cont
         padding: EdgeInsets.all(2.0),
         child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
         height: 32,
-        color: getColorPrimary(context), // Use getColorPrimary with context
+        color: context.colorScheme.primary,
       ),
       for (int i = 0; i <= playersAmount; i++)
         Container(
-            height: 32, color: getColorSecondary(context)), // Use getColorSecondary with context
+            height: 32, color: context.colorScheme.secondary,), // Use getColorSecondary with context
     ],
   );
 }
