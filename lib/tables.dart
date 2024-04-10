@@ -147,154 +147,180 @@ class _NotepadState extends State<Notepad> {
       context.l10n?.roomOfRequirement
     ];
 
+    // Get the current selected theme from AppSettings
+    final appSettings = Provider.of<AppSettings>(context, listen: false);
+    final ThemeData selectedTheme = appSettings.selectedTheme;
+
     return SingleChildScrollView(
       child: Table(
-          border: TableBorder.all(width: 2, color: Color.fromARGB(255, 131, 131, 131)),
-          columnWidths: {
-            0: FixedColumnWidth(120),
-          },
-          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-          children: <TableRow>[
-            TableRow(
-              decoration: const BoxDecoration(),
-              children: <Widget>[
+        border: TableBorder.all(
+          width: 2,
+          color: Color.fromARGB(255, 65, 65, 65),
+        ),
+        columnWidths: {
+          0: FixedColumnWidth(120),
+        },
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        children: <TableRow>[
+          TableRow(
+            decoration: const BoxDecoration(),
+            children: <Widget>[
+              Container(
+                color: Colors.white,
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(2.0),
+                child: Text(
+                  context.l10n!.mansion,
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 0, 0)),
+                ),
+                height: 32,
+              ),
+              for (int i = 0; i <= widget.numberOfPlayers - 2; i++)
                 Container(
+                  color: Colors.white,
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(2.0),
-                  child: Text(context.l10n!.mansion,
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
-                  height: 32,
-                ),
-                for (int i = 0; i <= widget.numberOfPlayers - 2; i++)
-                  Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(2.0),
-                    child: TextField(
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.only(left: 3, bottom: 10, top: 0, right: 3),
-                            hintText: context.l10n?.player)),
-                    height: 32,
-                  ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(2.0),
-                  child: Text(context.l10n!.you,
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-                  height: 32,
-                ),
-                Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(2.0),
-                    child: FittedBox(
-                      child: Text('Notes',
-                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      hintText: context.l10n?.player,
+                      hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 0, 0)),
                     ),
-                    height: 32,
-                    color: Colors.white),
-              ],
-            ),
-            if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 1) ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
-              for (var text in ktoArrayHasbro)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
-              for (var text in czymArrayHasbro)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
-              for (var text in gdzieArrayHasbro)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 2) ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
-              for (var text in ktoArrayDiscover)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
-              for (var text in czymArrayDiscover)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
-              for (var text in gdzieArrayDiscover)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 4) ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
-              for (var text in ktoArraySimpsons)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
-              for (var text in czymArraySimpsons)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
-              for (var text in gdzieArraySimpsons)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 5) ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
-              for (var text in ktoArrayHarryPotter)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
-              for (var text in czymArrayHarryPotter)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
-              for (var text in gdzieArrayHarryPotter)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-            ] else ...[
-              createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
-              for (var text in ktoArrayClassic)
-                createClickableTableRow(text, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
-              for (var text in czymArrayClassic)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-              createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
-              for (var text in gdzieArrayClassic)
-                createClickableTableRow(text!, widget.numberOfPlayers),
-            ]
-          ]),
+                  ),
+                  height: 32,
+                ),
+              Container(
+                color: Colors.white,
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(2.0),
+                child: Text(
+                  context.l10n!.you,
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+                height: 32,
+              ),
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(2.0),
+                child: FittedBox(
+                  child: Text('Notes',
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                ),
+                height: 32,
+                color: Colors.white,
+              ),
+            ],
+          ),
+          if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 1) ...[
+            createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
+            for (var text in ktoArrayHasbro) createClickableTableRow(text, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
+            for (var text in czymArrayHasbro)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
+            for (var text in gdzieArrayHasbro)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+          ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 2) ...[
+            createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
+            for (var text in ktoArrayDiscover)
+              createClickableTableRow(text, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
+            for (var text in czymArrayDiscover)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
+            for (var text in gdzieArrayDiscover)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+          ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 4) ...[
+            createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
+            for (var text in ktoArraySimpsons)
+              createClickableTableRow(text, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
+            for (var text in czymArraySimpsons)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
+            for (var text in gdzieArraySimpsons)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+          ] else if (Provider.of<AppSettings>(context, listen: false).selectedVersion == 5) ...[
+            createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
+            for (var text in ktoArrayHarryPotter)
+              createClickableTableRow(text, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
+            for (var text in czymArrayHarryPotter)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
+            for (var text in gdzieArrayHarryPotter)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+          ] else ...[
+            createSectionTableRow(context.l10n!.who, widget.numberOfPlayers, context),
+            for (var text in ktoArrayClassic) createClickableTableRow(text, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.how, widget.numberOfPlayers, context),
+            for (var text in czymArrayClassic)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+            createSectionTableRow(context.l10n!.where, widget.numberOfPlayers, context),
+            for (var text in gdzieArrayClassic)
+              createClickableTableRow(text!, widget.numberOfPlayers),
+          ]
+        ],
+      ),
     );
   }
-}
 
-TableRow createClickableTableRow(String text, int playersAmount) {
-  return TableRow(
-    decoration: const BoxDecoration(
-      color: Colors.white,
-    ),
-    children: <Widget>[
-      GestureDetector(
-        onDoubleTap: () {},
-        child: Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.all(2.0),
-          child: AutoSizeText(text,
+  TableRow createClickableTableRow(String text, int playersAmount) {
+    return TableRow(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+      ),
+      children: <Widget>[
+        GestureDetector(
+          onDoubleTap: () {},
+          child: Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(2.0),
+            child: AutoSizeText(
+              text,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               minFontSize: 8,
-              maxLines: 2),
-          height: 32,
-          color: Colors.white,
+              maxLines: 2,
+            ),
+            height: 32,
+            color: Colors.white,
+          ),
         ),
-      ),
-      for (int i = 0; i <= playersAmount; i++) ClickableTableCell(),
-    ],
-  );
-}
+        for (int i = 0; i <= playersAmount; i++) ClickableTableCell(),
+      ],
+    );
+  }
 
-TableRow createSectionTableRow(String text, int playersAmount, BuildContext context) {
-  return TableRow(
-    decoration: BoxDecoration(
-      color: Colors.white,
-    ),
-    children: <Widget>[
-      Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(2.0),
-        child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
-        height: 32,
-        color: context.colorScheme.primary,
+  TableRow createSectionTableRow(String text, int playersAmount, BuildContext context) {
+    // Get the current selected theme from AppSettings
+    final appSettings = Provider.of<AppSettings>(context, listen: false);
+    final ThemeData selectedTheme = appSettings.selectedTheme;
+
+    return TableRow(
+      decoration: BoxDecoration(
+        color: selectedTheme.colorScheme.secondary,
       ),
-      for (int i = 0; i <= playersAmount; i++)
+      children: <Widget>[
         Container(
-            height: 32, color: context.colorScheme.secondary,), // Use getColorSecondary with context
-    ],
-  );
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(2.0),
+          child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
+          height: 32,
+          color: selectedTheme.colorScheme.secondary, // Apply primary color here if needed
+        ),
+        for (int i = 0; i <= playersAmount; i++)
+          Container(
+            height: 32,
+            color: selectedTheme.colorScheme.secondary,
+          ),
+      ],
+    );
+  }
 }

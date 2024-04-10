@@ -1,4 +1,3 @@
-
 import 'package:clue_notepad/models/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +15,7 @@ class SetPlayersDialogOption extends StatelessWidget {
         width: 40.0,
         height: 40.0,
         child: ElevatedButton(
-          child: Text('$numberOfPlayers'),
+          child: Text(textAlign: TextAlign.center, '$numberOfPlayers'),
           onPressed: () {
             context.read<AppSettings>().setPlayersInitial(numberOfPlayers);
             Navigator.of(context).pop();

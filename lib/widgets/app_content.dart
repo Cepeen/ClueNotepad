@@ -1,5 +1,6 @@
 import 'package:clue_notepad/models/app_settings.dart';
 import 'package:clue_notepad/ui/theme_extensions.dart';
+import 'package:clue_notepad/widgets/chose_edition_dialog.dart';
 import 'package:clue_notepad/widgets/clickable_table_cell.dart';
 import 'package:clue_notepad/widgets/set_color_dialog_option.dart';
 import 'package:clue_notepad/widgets/set_player_dialog_option.dart';
@@ -95,84 +96,11 @@ class _AppContentState extends State<AppContent> {
       case 2:
         {
           showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return SimpleDialog(
-                  title: Text(context.l10n!.choseEdition),
-                  children: <Widget>[
-                    SimpleDialogOption(
-                        padding: const EdgeInsets.all(4.0),
-                        child: SizedBox(
-                            width: 40.0,
-                            height: 40.0,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  Provider.of<AppSettings>(context, listen: false).changeVersion(1);
-                                  Navigator.of(context).pop((() {}));
-                                });
-                              },
-                              child: Text(context.l10n!.hasbro),
-                            ))),
-                    SimpleDialogOption(
-                        padding: const EdgeInsets.all(4.0),
-                        child: SizedBox(
-                            width: 40.0,
-                            height: 40.0,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  Provider.of<AppSettings>(context, listen: false).changeVersion(2);
-                                  Navigator.of(context).pop((() {}));
-                                });
-                              },
-                              child: Text(context.l10n!.discover),
-                            ))),
-                    SimpleDialogOption(
-                        padding: const EdgeInsets.all(4.0),
-                        child: SizedBox(
-                            width: 40.0,
-                            height: 40.0,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  Provider.of<AppSettings>(context, listen: false).changeVersion(3);
-                                  Navigator.of(context).pop((() {}));
-                                });
-                              },
-                              child: Text(context.l10n!.classic),
-                            ))),
-                    SimpleDialogOption(
-                        padding: const EdgeInsets.all(4.0),
-                        child: SizedBox(
-                            width: 40.0,
-                            height: 40.0,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  Provider.of<AppSettings>(context, listen: false).changeVersion(4);
-                                  Navigator.of(context).pop((() {}));
-                                });
-                              },
-                              child: Text(context.l10n!.theSimpsonsEdition),
-                            ))),
-                    SimpleDialogOption(
-                        padding: const EdgeInsets.all(4.0),
-                        child: SizedBox(
-                            width: 40.0,
-                            height: 40.0,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  Provider.of<AppSettings>(context, listen: false).changeVersion(5);
-                                  Navigator.of(context).pop((() {}));
-                                });
-                              },
-                              child: Text(context.l10n!.harryPotterEdition),
-                            ))),
-                  ],
-                );
-              });
+            context: context,
+            builder: (BuildContext context) {
+              return ChooseEditionDialog();
+            },
+          );
         }
         break;
       //SETTING COLORS
@@ -195,21 +123,33 @@ class _AppContentState extends State<AppContent> {
                   ),
                   SetColorDialogOption(
                     theme: blueTheme,
+                    buttonColor: Colors.blue,
+                    buttonText: context.l10n!.blue,
                   ),
                   SetColorDialogOption(
                     theme: redTheme,
+                    buttonColor: Colors.red,
+                    buttonText: context.l10n!.red,
                   ),
                   SetColorDialogOption(
                     theme: greenTheme,
+                    buttonColor: Colors.green,
+                    buttonText: context.l10n!.green,
                   ),
                   SetColorDialogOption(
                     theme: yellowTheme,
+                    buttonColor: Colors.yellow,
+                    buttonText: context.l10n!.yellow,
                   ),
                   SetColorDialogOption(
                     theme: purpleTheme,
+                    buttonColor: Colors.purple,
+                    buttonText: context.l10n!.purple,
                   ),
                   SetColorDialogOption(
                     theme: whiteTheme,
+                    buttonColor: Colors.white,
+                    buttonText: context.l10n!.white,
                   ),
                 ],
               );
@@ -217,6 +157,7 @@ class _AppContentState extends State<AppContent> {
           );
         }
         break;
+
       //ABOUT SECTION
       case 4:
         {
