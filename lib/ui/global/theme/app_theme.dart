@@ -57,6 +57,6 @@ final whiteTheme = ThemeData(
     color: Color(0xFFAAAAAA),
     systemOverlayStyle: SystemUiOverlayStyle.dark,
   ),
-  colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color.fromARGB(255, 190, 190, 190)),
+  colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFFBEBEBE)),
   scaffoldBackgroundColor: Color(0xFFFCFCFC),
 );
