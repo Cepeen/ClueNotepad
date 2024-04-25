@@ -1,22 +1,20 @@
-import 'package:clue_notepad/models/app_settings.dart';
 import 'package:clue_notepad/ui/theme_extensions.dart';
+import 'package:clue_notepad/utils/build_context_extensions.dart';
 import 'package:clue_notepad/widgets/chose_edition_dialog.dart';
-import 'package:clue_notepad/widgets/clickable_table_cell.dart';
 import 'package:clue_notepad/widgets/set_color_dialog_option.dart';
 import 'package:clue_notepad/widgets/set_player_dialog_option.dart';
 import 'package:flutter/material.dart';
 import 'package:clue_notepad/ui/global/theme/app_theme.dart';
 import '../about.dart';
+import '../models/game_type.dart';
 import '../tables.dart';
 import 'package:provider/provider.dart';
 
 class AppContent extends StatefulWidget {
-  final int selectedVersion;
   final int playersInitial;
 
   const AppContent({
     Key? key,
-    required this.selectedVersion,
     required this.playersInitial,
   }) : super(key: key);
 
@@ -47,7 +45,7 @@ class _AppContentState extends State<AppContent> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          Provider.of<TableRowProvider>(context, listen: false).setIndex(0);
+                          context.read<GameState>().resetGame();
                           Navigator.of(context).pop();
                         },
                         child: Text(
@@ -170,23 +168,6 @@ class _AppContentState extends State<AppContent> {
 
   static const String _title = 'Clue Notepad';
 
-  String _versionTitle(int version) {
-    switch (version) {
-      case 1:
-        return context.l10n!.hasbro;
-      case 2:
-        return context.l10n!.discover;
-      case 3:
-        return context.l10n!.classic;
-      case 4:
-        return context.l10n!.theSimpsonsEdition;
-      case 5:
-        return context.l10n!.harryPotterEdition;
-      default:
-        return context.l10n!.classic;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -202,7 +183,7 @@ class _AppContentState extends State<AppContent> {
               ),
             ),
             Text(
-              _versionTitle(Provider.of<AppSettings>(context).selectedVersion),
+              _gameTitle(Provider.of<GameState>(context).selectedVersion),
               style: TextStyle(
                 fontSize: 10.0,
               ),
@@ -222,7 +203,24 @@ class _AppContentState extends State<AppContent> {
           )
         ],
       ),
-      body: Notepad(_title, Provider.of<AppSettings>(context).playersInitial),
+      body: Notepad(_title, Provider.of<GameState>(context).players),
     );
+  }
+
+  String _gameTitle(GameType gameType) {
+    switch (gameType) {
+      case GameType.hasbro:
+        return context.l10n!.hasbro;
+      case GameType.discoverSecret:
+        return context.l10n!.discover;
+      case GameType.classic:
+        return context.l10n!.classic;
+      case GameType.simpsons:
+        return context.l10n!.theSimpsonsEdition;
+      case GameType.harryPotter:
+        return context.l10n!.harryPotterEdition;
+      default:
+        return context.l10n!.classic;
+    }
   }
 }
