@@ -27,41 +27,47 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              actions: <Widget>[
-                Row(
+              content: Container(
+                height: 40,
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: Icon(Icons.check),
-                      onPressed: () {
-                        _setCellState(TableCellState.confirmed);
-                        Navigator.of(context).pop();
-                      },
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.check),
+                          onPressed: () {
+                            _setCellState(TableCellState.confirmed);
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.close),
+                          onPressed: () {
+                            _setCellState(TableCellState.notMatched);
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.help),
+                          onPressed: () {
+                            _setCellState(TableCellState.questionable);
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        TextButton(
+                          child: Text(context.l10n!.clear),
+                          onPressed: () {
+                            _setCellState(TableCellState.clear);
+                            Navigator.of(context).pop();
+                          },
+                        )
+                      ],
                     ),
-                    IconButton(
-                      icon: Icon(Icons.close),
-                      onPressed: () {
-                        _setCellState(TableCellState.notMatched);
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.help),
-                      onPressed: () {
-                        _setCellState(TableCellState.questionable);
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    TextButton(
-                      child: Text(context.l10n!.clear),
-                      onPressed: () {
-                        _setCellState(TableCellState.clear);
-                        Navigator.of(context).pop();
-                      },
-                    )
                   ],
                 ),
-              ],
+              ),
             );
           },
         );

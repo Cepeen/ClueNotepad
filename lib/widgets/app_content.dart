@@ -50,7 +50,7 @@ class _AppContentState extends State<AppContent> {
                         },
                         child: Text(
                           'Yes',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
                       SizedBox(width: 18),
@@ -79,12 +79,13 @@ class _AppContentState extends State<AppContent> {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              backgroundColor: context.colorScheme.background,
               title: FittedBox(child: Text((context.l10n!.howMany))),
               content: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [...List.generate(6, (i) => SetPlayersDialogOption(i))],
+                children: [
+                  ...List.generate(5, (i) => SetPlayersDialogOption(i + 2))
+                ], // Od 2 do 6 graczy
               ),
             ),
           );
