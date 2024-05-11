@@ -1,0 +1,51 @@
+name: Deploy Web Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Set Git config
+        run: |
+          git config --global user.email "${{ secrets.GIT_EMAIL }}"
+          git config --global user.name "${{ secrets.GIT_USERNAME }}"
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '2.10.0'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build web app
+        run: flutter build web
+
+      - name: Clone ClueNotepadWeb repository
+        run: git clone https://github.com/Cepeen/ClueNotepadWeb.git web_repo
+
+      - name: Clear existing contents in ClueNotepadWeb repository
+        run: rm -rf web_repo/*
+
+      - name: Copy build files to ClueNotepadWeb repository
+        run: cp -a build/. web_repo/
+
+      - name: Commit and push changes to ClueNotepadWeb repository
+        env:
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+        run: |
+          cd web_repo
+          git config --global user.email "${GIT_EMAIL}"
+          git config --global user.name "${GIT_USERNAME}"
+          git add .
+          git commit -m "Update web build"
+          git push origin main
