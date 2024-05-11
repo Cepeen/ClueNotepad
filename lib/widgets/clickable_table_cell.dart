@@ -28,7 +28,7 @@ class _ClickableTableCellState extends State<ClickableTableCell> {
           builder: (BuildContext context) {
             return AlertDialog(
               content: Container(
-                height: 40,
+                height: 48,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

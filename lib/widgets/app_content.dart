@@ -83,9 +83,7 @@ class _AppContentState extends State<AppContent> {
               content: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ...List.generate(5, (i) => SetPlayersDialogOption(i + 2))
-                ], // Od 2 do 6 graczy
+                children: [...List.generate(5, (i) => SetPlayersDialogOption(i + 2))],
               ),
             ),
           );

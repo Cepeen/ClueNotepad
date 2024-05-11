@@ -10,19 +10,19 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
-  // The package version. CFBundleShortVersionString on iOS, versionName on Android.
-  late String _version;
+  late String _version = 'loading...'; // Initialize _version to avoid null errors
 
   @override
   void initState() {
-    _load();
     super.initState();
+    _load();
   }
 
   void _load() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    _version = packageInfo.version;
-    setState(() {});
+    setState(() {
+      _version = packageInfo.version;
+    });
   }
 
   @override
