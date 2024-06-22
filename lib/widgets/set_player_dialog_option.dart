@@ -16,11 +16,29 @@ class SetPlayersDialogOption extends StatelessWidget {
         width: 40.0,
         height: 40.0,
         child: ElevatedButton(
-          child: Text(textAlign: TextAlign.center, '$numberOfPlayers'),
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.zero, 
+            shape: CircleBorder(), 
+          ),
           onPressed: () {
             context.read<GameState>().setPlayersInitial(numberOfPlayers);
             Navigator.of(context).pop();
           },
+          child: Stack(
+            children: [
+              // Centered text
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    '$numberOfPlayers',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black), // Text color
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
