@@ -45,7 +45,7 @@ class _NotepadState extends State<Notepad> {
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
                 ),
-                height: 36,
+                height: 32,
               ),
               for (int i = 0; i < widget.numberOfPlayers - 1; i++)
                 Container(
@@ -61,14 +61,15 @@ class _NotepadState extends State<Notepad> {
                       errorBorder: InputBorder.none,
                       disabledBorder: InputBorder.none,
                       hintText: context.l10n?.player,
-                      contentPadding: EdgeInsets.symmetric(vertical: 6),
+                      contentPadding: EdgeInsets.zero,
+                      isDense: true,
                       hintStyle: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
-                  height: 36,
+                  height: 32,
                 ),
               Container(
                 color: Colors.white,
@@ -78,7 +79,7 @@ class _NotepadState extends State<Notepad> {
                   context.l10n!.you,
                   style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                 ),
-                height: 36,
+                height: 32,
               ),
               Container(
                 alignment: Alignment.center,
@@ -89,7 +90,7 @@ class _NotepadState extends State<Notepad> {
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ),
-                height: 36,
+                height: 32,
                 color: Colors.white,
               ),
             ],
@@ -125,7 +126,7 @@ class _NotepadState extends State<Notepad> {
               minFontSize: 8,
               maxLines: 2,
             ),
-            height: 36,
+            height: 32,
             color: Colors.white,
           ),
         ),
@@ -149,12 +150,12 @@ class _NotepadState extends State<Notepad> {
           alignment: Alignment.center,
           padding: EdgeInsets.all(2.0),
           child: Text(text, style: TextStyle(fontWeight: FontWeight.bold)),
-          height: 36,
+          height: 32,
           color: selectedTheme.colorScheme.secondary,
         ),
         for (int i = 0; i <= playersAmount; i++)
           Container(
-            height: 36,
+            height: 32,
             color: selectedTheme.colorScheme.secondary,
           ),
       ],
