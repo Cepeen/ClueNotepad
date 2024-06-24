@@ -16,7 +16,10 @@ One of the greatest pros of a game is its power to increase the abilities of our
 
 
 <br>
-**[Click here to test app in the browser.](http://www.tomektomasik.pl/ClueNotepadWeb/)**
+
+### Demo
+
+[Here is the web version of the app hosted on Github Pages](https://www.tomektomasik.pl/ClueNotepadWeb/).
 
 
 <br>
