@@ -1,4 +1,3 @@
-import 'package:clue_notepad/ui/theme_extensions.dart';
 import 'package:clue_notepad/utils/build_context_extensions.dart';
 import 'package:clue_notepad/widgets/chose_edition_dialog.dart';
 import 'package:clue_notepad/widgets/set_color_dialog_option.dart';
