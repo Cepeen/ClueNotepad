@@ -1,4 +1,4 @@
-package com.example.cluenotepad
+package pol.clue.notepad
 
 import io.flutter.embedding.android.FlutterActivity
 

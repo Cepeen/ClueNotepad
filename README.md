@@ -8,10 +8,10 @@ One of the greatest pros of a game is its power to increase the abilities of our
 
   
 <div style="display:flex; flex-direction:row;">
-    <img src="https://pxreyoeukohfhvbwcbgd.supabase.co/storage/v1/object/public/app_screenshots/clue_notepad/Screenshot_2024-06-24-11-57-57-665_com.example.clue_notepad.jpg?t=2024-06-24T10%3A05%3A43.939Z" alt="Screenshot 2" width="200" style="margin: 5px;">
-    <img src="https://pxreyoeukohfhvbwcbgd.supabase.co/storage/v1/object/public/app_screenshots/clue_notepad/Screenshot_2024-06-24-11-58-08-643_com.example.clue_notepad.jpg?t=2024-06-24T10%3A06%3A14.183Z" alt="Screenshot 3" width="200" style="margin: 5px;">
-    <img src="https://pxreyoeukohfhvbwcbgd.supabase.co/storage/v1/object/public/app_screenshots/clue_notepad/Screenshot_2024-06-24-12-07-40-388_com.example.clue_notepad.jpg?t=2024-06-24T10%3A09%3A10.197Z" alt="Screenshot 1" width="200" style="margin: 5px;">
-        <img src="https://pxreyoeukohfhvbwcbgd.supabase.co/storage/v1/object/public/app_screenshots/clue_notepad/Screenshot_2024-06-24-12-16-11-742_com.example.clue_notepad.jpg?t=2024-06-24T10%3A17%3A05.224Z" alt="Screenshot 1" width="200" style="margin: 5px;">
+    <img src="https://pxreyoeukohfhvbwcbgd.supabase.co/storage/v1/object/public/app_screenshots/clue_notepad/Screenshot_2024-06-24-11-57-57-665_pol.clue.notepad.jpg?t=2024-06-24T10%3A05%3A43.939Z" alt="Screenshot 2" width="200" style="margin: 5px;">
+    <img src="https://pxreyoeukohfhvbwcbgd.supabase.co/storage/v1/object/public/app_screenshots/clue_notepad/Screenshot_2024-06-24-11-58-08-643_pol.clue.notepad.jpg?t=2024-06-24T10%3A06%3A14.183Z" alt="Screenshot 3" width="200" style="margin: 5px;">
+    <img src="https://pxreyoeukohfhvbwcbgd.supabase.co/storage/v1/object/public/app_screenshots/clue_notepad/Screenshot_2024-06-24-12-07-40-388_pol.clue.notepad.jpg?t=2024-06-24T10%3A09%3A10.197Z" alt="Screenshot 1" width="200" style="margin: 5px;">
+        <img src="https://pxreyoeukohfhvbwcbgd.supabase.co/storage/v1/object/public/app_screenshots/clue_notepad/Screenshot_2024-06-24-12-16-11-742_pol.clue.notepad.jpg?t=2024-06-24T10%3A17%3A05.224Z" alt="Screenshot 1" width="200" style="margin: 5px;">
 </div>
 
 
