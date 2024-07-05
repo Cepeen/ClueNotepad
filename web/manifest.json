@@ -1,6 +1,6 @@
 {
-    "name": "cluenotepad",
-    "short_name": "cluenotepad",
+    "name": "Clue Notepad",
+    "short_name": "Clue Notepad",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
